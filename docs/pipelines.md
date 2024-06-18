@@ -1,5 +1,7 @@
 # Introduction to HCBC pipelines
 
+Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
+
 ## Nextflow in Seqera platform
 
 - Create an user here: https://cloud.seqera.io/login

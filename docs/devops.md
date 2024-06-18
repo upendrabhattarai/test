@@ -1,5 +1,7 @@
 # Build platforms
 
+Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
+
 
 ## Configure to use posit package manager
 

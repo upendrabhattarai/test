@@ -2,4 +2,5 @@ site_name: HCBC Platform
 nav:
   - Home: index.md
   - Pipelines: pipelines.md
+  - Developers: devops.md
 theme: mkdocs 
