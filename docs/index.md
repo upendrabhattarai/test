@@ -8,6 +8,18 @@ We are developing platforms for each analysis type we have experience with at HC
 
 Got to each analysis type section to learn how to use our platform.
 
+## General Project
+
+This set up needs `bcbioR` and `usethis` packages.
+
+Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
+
+* Deploy folders/files compatible with any project: `bcbioR::bcbio_templates(type="base", outpath="/path/to/analysis/folder")`
+* Activate your r session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
+* Start a git repository: `usethis::use_git()`
+* Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
+* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
+
 ## RNAseq
 
 * Using O2 open OnDemand: 
