@@ -18,6 +18,7 @@ Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or r
 * Activate your r session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
 * Start a git repository: `usethis::use_git()`
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
+  * You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
 * Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
 ## RNAseq
@@ -32,7 +33,7 @@ Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or r
 * Follow this instruction https://bcbio.github.io/bcbioR/#set-base-project to start you project
 * Follow this instruction https://bcbio.github.io/bcbioR/#set-rnaseq-report-folder to start your RNAseq analysis
 
-# BCBIOR Supported Templates
+# bcbioR Supported Templates
 
 We used `bcbioR` to deploy folders and code to our project directories to improve robustness in our analysis.
 

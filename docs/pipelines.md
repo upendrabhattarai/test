@@ -49,7 +49,7 @@ module load java/jdk-21.0.2
 export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/
 export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/
 
-./nextflow run nf-core/rnaseq -profile singularity,test --outdir here
+./nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity,test --outdir here -resume
 ```
 
 ## Nextflow in FAS
@@ -69,8 +69,14 @@ Example command to run in an interactive job:
 /n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow run nf-core/rnaseq -profile test,singularity --outdir tmp -c /n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow/fas.config
 ```
 
-For non-test data, this is the head job you need to submit:
+For non-test data, this is the head job you need to submit. Copy first the config files and modified as  needed:
 
+```
+cp /n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow/fas.config .
+cp /n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow/rnaseq.config .
+```
+
+And then modify this template as needed before using it:
 
 ```
 #!/bin/bash
@@ -92,7 +98,10 @@ export NXF_SINGULARITY_LIBRARYDIR=/n/holylfs05/LABS/hsph_bioinfo/Lab/shared_reso
 
 OUTPUT=path_to_results
 
-/n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow run nf-core/rnaseq -profile singularity \\
-  -c analysis.config \\
-  --outdir $OUTPUT -c /n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow/fas.config
+/n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/nextflow run nf-core/rnaseq -r 3.14.0 \
+  -profile singularity \
+  -c analysis.config \
+  -c rnaseq.config \ 
+  --outdir $OUTPUT -c fas.config \
+   -resume
 ```
