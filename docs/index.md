@@ -6,7 +6,7 @@ We are developing platforms for each analysis type we have experience with at HC
 
 - bulk RNAseq analysis ![](https://img.shields.io/badge/status-beta-blue)
 
-Got to each analysis type section to learn how to use our platform.
+Go to each analysis type section to learn how to use our platform.
 
 ## General Project
 
