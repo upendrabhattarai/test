@@ -34,7 +34,7 @@ Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or r
 
 ## RNAseq
 
-* Follow this instruction https://bcbio.github.io/bcbioR/#set-base-project to start you project
+* Follow the previous step to set up the `base` project
 * Follow this instruction https://bcbio.github.io/bcbioR/#set-rnaseq-report-folder to start your RNAseq analysis
 
 # bcbioR Supported Templates
