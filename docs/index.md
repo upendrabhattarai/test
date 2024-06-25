@@ -28,6 +28,9 @@ Make sure the version is `0.1.3` with this command `packageVersion("bcbioR")` or
 * Deploy folders/files compatible with any project: `bcbioR::bcbio_templates(type="base", outpath="/path/to/analysis/folder")`
 * Activate your R session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
 * Start a git repository: `usethis::use_git()`
+
+If you want to push this project to GitHub, follow these steps:
+
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
   * **NOTE** You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
 * Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
