@@ -6,38 +6,38 @@ We are developing platforms for each analysis type we have experience with at HC
 
 - bulk RNAseq analysis ![](https://img.shields.io/badge/status-beta-blue)
 
-Go to each analysis type section to learn how to use our platform.
+Go to each analysis-type section to learn how to use our platform.
 
 ## Set up package
 
 * Using O2 open OnDemand: 
     * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
-    * Start Rstudio With these modules on: `gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
-    * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1")`
+    * Start Rstudio with these modules on: `gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
+    * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1_rnaseq")`
 
-* load bcbioR with `library(bcbioR)`
+* Load bcbioR with `library(bcbioR)`
 * Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
 
 
 ## General Project
 
-This set up needs `bcbioR` and `usethis` packages.
+This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https://usethis.r-lib.org) packages.
 
-Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
+Make sure the version is `0.1.3` with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
 
 * Deploy folders/files compatible with any project: `bcbioR::bcbio_templates(type="base", outpath="/path/to/analysis/folder")`
-* Activate your r session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
+* Activate your R session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
 * Start a git repository: `usethis::use_git()`
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
-  * You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
+  * **NOTE** You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
 * Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
 ## RNAseq
 
-* Follow the previous step to set up the `base` project
-* Follow this instruction https://bcbio.github.io/bcbioR/#set-rnaseq-report-folder to start your RNAseq analysis
+* Follow the previous step to set up the [base](#general-project) project
+* Follow this instruction https://bcbio.github.io/bcbioR/#set-rnaseq-report-folder to start your **RNAseq** analysis
 
-# bcbioR Supported Templates
+# bcbioR supported templates
 
 We used `bcbioR` to deploy folders and code to our project directories to improve robustness in our analysis.
 
