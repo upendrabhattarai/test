@@ -25,8 +25,8 @@ This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https:
 
 Make sure the version is `0.1.3` with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
 
-* Deploy folders/files compatible with any project: `bcbioR::bcbio_templates(type="base", outpath="/path/to/analysis/folder")`
 * Activate your R session to make your working directory to be your project folder: `usethis::proj_activate("/path/to/analysis/folder")`
+* Deploy folders/files compatible with any project: `bcbioR::bcbio_templates(type="base", outpath="/path/to/analysis/folder")`
 * Start a git repository: `usethis::use_git()`
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
   * **NOTE** You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
