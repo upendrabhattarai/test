@@ -46,8 +46,8 @@ Example of running in single node Nextflow/nf-core/rnaseq in O2.
 #SBATCH --mail-type=ALL                # Type of email notification (BEGIN, END, FAIL, ALL)
 
 module load java/jdk-21.0.2
-export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/
-export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/
+export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
+export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 
 ./nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity,test --outdir here -resume
 ```
