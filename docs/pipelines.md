@@ -29,6 +29,8 @@ You can add more columns to this file with more metadata, and use this file as t
 
 ## Nextflow in O2
 
+### RNAseq
+
 Example of running in single node Nextflow/nf-core/rnaseq in O2.
 
 ```
@@ -49,8 +51,31 @@ module load java/jdk-21.0.2
 export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 
-/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity,test --outdir here -resume
+/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity,test --outdir this_folder -resume
 ```
+
+### viralrecon
+
+Read documentation [here](https://nf-co.re/viralrecon/2.6.0/). 
+
+
+This is an example for test data:
+
+```
+module load java/jdk-21.0.2
+export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-viralrecon_2.6.0
+export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-viralrecon_2.6.0
+
+/n/app/bcbio/nextflow/nextflow run nf-core/viralrecon -r 2.6.0 -profile singularity,test --outdir this_folder -resume
+
+```
+To run your data, prepare input file following this [doc](https://nf-co.re/viralrecon/2.6.0/docs/usage/#samplesheet-format), and run it like this:
+
+```
+/n/app/bcbio/nextflow/nextflow run nf-core/viralrecon -r 2.6.0 -profile singularity --outdir this_folder --input samplesheet.csv -resume
+
+```
+
 
 ## Nextflow in FAS
 
