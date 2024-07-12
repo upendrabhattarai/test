@@ -39,7 +39,27 @@ options(repos = c(CRAN = "https://packagemanager.posit.co/cran/2024-05-01"))
 
 ### CELLCHAT
 
-Add `python/3.9.14` to the modules load to Rstudio in O2 ondemand.
+Use these modules when starting Rstudio in O2:
+
+```
+gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0 python/3.9.14
+```
+
+In the R console you can load deps with these lines:
+
+```
+# To use it
+reticulate::use_virtualenv("/n/app/bcbio/R4.3.1_python_cellchat")
+reticulate::py_config() # check it is pointing to right versions: umap-learn 0.5.5 and umap 1.26
+Sys.getenv("PYTHONPATH") # needs to be empty
+
+py_module_available(module = 'umap')
+reticulate::import(module = "umap", delay_load = TRUE)
+.libPath("/n/app/bcbio/R4.3.1_cellchat")
+library(CellChat)
+```
+
+To install it:
 
 ```
 # To install python deps
@@ -54,14 +74,4 @@ BiocManager::install("BiocNeighbors")
 install.packages('NMF')
 install.packages("circlize")
 devtools::install_github("jinworks/CellChat")
-
-
-# To use it
-reticulate::use_virtualenv("/n/app/bcbio/R4.3.1_python_cellchat")
-reticulate::py_config() # check it is pointing to right versions: umap-learn 0.5.5 and umap 1.26
-Sys.getenv("PYTHONPATH") # needs to be empty
-
-py_module_available(module = 'umap')
-reticulate::import(module = "umap", delay_load = TRUE)
-library(CellChat)
 ```
