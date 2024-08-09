@@ -18,8 +18,9 @@ Go to each analysis-type section to learn how to use our platform.
 * Load bcbioR with `library(bcbioR)`
 * Make sure the version is 0.1.3 with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
 
-
 ## General Project
+
+Use the [hcbc app](https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758) to set up projects names.
 
 This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https://usethis.r-lib.org) packages.
 
