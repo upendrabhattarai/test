@@ -1,11 +1,11 @@
-name: Deploy
+name: Build
 on:
   pull_request:
     branches:
       - main
 jobs:
   build:
-    name: Deploy docs to GitHub Pages
+    name: Make Docs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
