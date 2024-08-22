@@ -6,7 +6,10 @@ Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
 - Create an user here: https://cloud.seqera.io/login
 - Ask Platform team to add you to HCBC workspace
-- Transfer data to HCBC S3: Ask Alex/Lorena. Files will be at our S3 bucket `input/rawdata` folder
+- Transfer data to HCBC S3: Ask Alex/Lorena. Files will be at our S3 bucket `input/pipelineName_PI_hbcNNNNNN` folder
+
+### RNAseq
+
 - Prepare the CSV file according this [instructions](https://nf-co.re/rnaseq/3.14.0/docs/usage#multiple-runs-of-the-same-sample). File should look like this:
 
 ```csv
@@ -21,9 +24,9 @@ Use `bcbio_nfcore_check(csv_file)` to check the file is correct.
 You can add more columns to this file with more metadata, and use this file as the `coldata` file in the templates.
 
 - Safe the file under `meta` folder
-- Upload this file to our `Datasets` in Seqera using the name of the project but starting with `rnaseq-pi_lastname-hbc_code`
+- Upload this file to our `Datasets` in Seqera using the name of the project but starting with `pipelineName_PI_hbcNNNNNN`
 - Go to `Launchpad`, select `nf-core_rnaseq` pipeline, and select the previous created `Datasets` in the `input` parameter after clicking in `Browser`
-  - Select an output directory with the same name used for the `Dataset` inside the `results` folder in S3
+  - Select an output directory with the same name used for the `Dataset` inside the `results/pipelineName_PI_hbcNNNNNN` folder in S3
 - When pipeline is done, data will be copied to our on-premise HPC in the scratch system under `scratch/groups/hsph/hbc/bcbio/` folder
 
 
@@ -73,7 +76,6 @@ To run your data, prepare input file following this [doc](https://nf-co.re/viral
 
 ```
 /n/app/bcbio/nextflow/nextflow run nf-core/viralrecon -r 2.6.0 -profile singularity --outdir this_folder --input samplesheet.csv -resume
-
 ```
 
 
@@ -128,5 +130,5 @@ OUTPUT=path_to_results
   -c analysis.config \
   -c rnaseq.config \ 
   --outdir $OUTPUT -c fas.config \
-   -resume
+  -resume
 ```

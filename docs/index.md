@@ -8,11 +8,12 @@ We are developing platforms for each analysis type we have experience with at HC
 
 Go to each analysis-type section to learn how to use our platform.
 
-## Set up package
+## Set up the package
 
 * Using O2 open OnDemand: 
     * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
     * Start Rstudio with these modules on: `gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
+    * Add `--exclude=compute-f-17-[09-25]` to the 'Slurm Custom Arguments' field
     * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1_rnaseq")`
 
 * Load bcbioR with `library(bcbioR)`
@@ -20,7 +21,7 @@ Go to each analysis-type section to learn how to use our platform.
 
 ## General Project
 
-Use the [hcbc app](https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758) to set up projects names.
+Use the [hcbc app](https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758) to set up projects names. This name will be used for O2/FAS/github and dropbox. They may be already defined in the Trello card.
 
 This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https://usethis.r-lib.org) packages.
 
@@ -33,7 +34,7 @@ Make sure the version is `0.1.3` with this command `packageVersion("bcbioR")` or
 If you want to push this project to GitHub, follow these steps:
 
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
-  * **NOTE** You may want to run this first to keep this token working in future sessions: `git config --global credential.helper store`
+  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
 * Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
 ## RNAseq
@@ -48,6 +49,7 @@ We used `bcbioR` to deploy folders and code to our project directories to improv
 You can install `bcbioR` as indicated here: `https://github.com/bcbio/bcbioR/tree/main`
 
 RNAseq ![](https://img.shields.io/badge/status-alpha-blue)
+CELLCHAT ![](https://img.shields.io/badge/status-alpha-yellow)
 TEASeq ![](https://img.shields.io/badge/status-concept-yellow)
 COSMX ![](https://img.shields.io/badge/status-concept-yellow)
 scRNAseq ![](https://img.shields.io/badge/status-concept-yellow)
