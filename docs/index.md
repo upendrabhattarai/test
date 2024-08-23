@@ -48,9 +48,12 @@ We used `bcbioR` to deploy folders and code to our project directories to improv
 
 You can install `bcbioR` as indicated here: `https://github.com/bcbio/bcbioR/tree/main`
 
-RNAseq ![](https://img.shields.io/badge/status-alpha-blue)
-CELLCHAT ![](https://img.shields.io/badge/status-alpha-yellow)
+- RNAseq ![](https://img.shields.io/badge/status-alpha-blue)
+- CELLCHAT ![](https://img.shields.io/badge/status-alpha-yellow)
 TEASeq ![](https://img.shields.io/badge/status-concept-yellow)
-COSMX ![](https://img.shields.io/badge/status-concept-yellow)
-scRNAseq ![](https://img.shields.io/badge/status-concept-yellow)
+- COSMX ![](https://img.shields.io/badge/status-concept-yellow)
+- scRNAseq ![](https://img.shields.io/badge/status-concept-yellow)
 
+
+# Note
+>These materials have been developed by members of the teaching and platform team at the Harvard Chan Bioinformatics Core (HBC) RRID:SCR_025373. 
