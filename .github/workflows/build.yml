@@ -1,24 +1,19 @@
-name: Deploy
+name: Build
 on:
   pull_request:
     branches:
       - main
 jobs:
   build:
-    name: Deploy docs to GitHub Pages
+    name: Make Docs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
         uses: actions/checkout@v2
-      - run: pip install mkdocs-material 
-      - run: pip install pymdown-extensions
-      - run: pip install mkdocs-glightbox
-      - run: pip install mkdocs-pdf-export-plugin
-      - run: pip install mkdocs-git-revision-date-plugin
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0
         with:
           mkdocs_version: 'latest' # option
           #mkdocs_version: '1.1' # option
-          #requirements: 'requirements.txt' # option
+          requirements: 'requirements.txt' # option
           configfile: 'mkdocs.yml' # option
