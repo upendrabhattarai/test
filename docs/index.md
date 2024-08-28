@@ -42,6 +42,10 @@ If you want to push this project to GitHub, follow these steps:
 * Follow the previous step to set up the [base](#general-project) project
 * Follow this instruction https://bcbio.github.io/bcbioR/#set-rnaseq-report-folder to start your **RNAseq** analysis
 
+## scRNAseq
+
+Please, change to this common library path to perform you  analysis: `.libPaths("/n/app/bcbio/R4.3.1_singlecell/")`.
+
 # bcbioR supported templates
 
 We used `bcbioR` to deploy folders and code to our project directories to improve robustness in our analysis.
