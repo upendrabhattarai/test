@@ -35,6 +35,26 @@ options(BIOCONDUCTOR_CONFIG_FILE = "https://packagemanager.posit.co/bioconductor
 options(repos = c(CRAN = "https://packagemanager.posit.co/cran/2024-05-01"))
 ```
 
+### Creating env in Data Studio
+
+Set up the package manager [properly](https://packagemanager.posit.co/client/#/repos/bioconductor/setup?distribution=ubuntu-22.04):
+
+```
+# Configure BioCManager to use Posit Package Manager:
+options(BioC_mirror = "https://packagemanager.posit.co/bioconductor/latest")
+options(BIOCONDUCTOR_CONFIG_FILE = "https://packagemanager.posit.co/bioconductor/latest/config.yaml")
+
+# Configure a CRAN snapshot compatible with Bioconductor 3.20:
+options(repos = c(CRAN = "https://packagemanager.posit.co/cran/__linux__/jammy/latest"))
+install.packages("BiocManager")
+```
+
+Install minimum system library packages from [ubuntu22](ubuntu22.system.ready.txt).
+
+Install all needed packages, and stop the server to get the first checkpoint with the packages installed. 
+
+After this, other users can start a new DataStudio from it with the dependencies already installed.
+
 ### Installing sc packages in O2
 
 ### CELLCHAT

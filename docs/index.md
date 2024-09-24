@@ -44,7 +44,11 @@ If you want to push this project to GitHub, follow these steps:
 
 ## scRNAseq
 
-Please, change to this common library path to perform you  analysis: `.libPaths("/n/app/bcbio/R4.3.1_singlecell/")`.
+Please, change to this common library path to perform you  analysis: `.libPaths("/n/app/bcbio/R4.3.1_singlecell")`.
+
+## ChipSeq
+
+Please, change to this common library path to perform you  analysis: `.libPaths("/n/app/bcbio/R4.3.1_chipseq")`.
 
 # bcbioR supported templates
 
