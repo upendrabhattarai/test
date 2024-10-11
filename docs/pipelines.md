@@ -1,6 +1,6 @@
 # Introduction to HCBC pipelines
 
-Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
+Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
 ## Nextflow in Seqera platform
 
@@ -31,6 +31,30 @@ You can add more columns to this file with more metadata, and use this file as t
 
 
 ## Nextflow in O2
+
+Nextflow is available at `/n/app/bcbio/nextflow/nextflow`. 
+Singularity containers at available at `/n/app/singularity/containers/shared/bcbio/`.
+
+An example of batch script is:
+
+```
+#!/bin/bash
+
+#SBATCH --job-name=Nextflow      # Job name
+#SBATCH --partition=priority            # Partition name
+#SBATCH --time=1-23:59                 # Runtime in D-HH:MM format
+#SBATCH --nodes=1                      # Number of nodes (keep at 1)
+#SBATCH --ntasks=1                     # Number of tasks per node (keep at 1)
+#SBATCH --cpus-per-task=8            # CPU cores requested per task (change for threaded jobs)
+#SBATCH --mem=128G                     # Memory needed per node (total)
+#SBATCH --error=jobid_%j.err           # File to which STDERR will be written, including job ID
+#SBATCH --output=jobid_%j.out          # File to which STDOUT will be written, including job ID
+#SBATCH --mail-type=ALL                # Type of email notification (BEGIN, END, FAIL, ALL)
+
+module load java/jdk-21.0.2
+export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
+export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
+```
 
 ### RNAseq
 

@@ -2,6 +2,19 @@
 
 Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
+## App development
+
+- Use HBC or bcbio organization
+- Private repo prior to release
+- Test data needs to be part of the code
+- README to explain how to use the test data
+- First release should be prior to client
+    - Must be usable at First release
+    - At least one other person to review and approve 
+    - After that main branch get blocked and version numbers start at 1.0.0
+    - Then start dev branch
+- Each time we merge a Pull request, we need to make a release
+- Publish on Posit connect with a new name that matches the version
 
 ## Data management
 
