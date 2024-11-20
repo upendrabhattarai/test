@@ -2,6 +2,35 @@
 
 Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
+## Paramters
+
+### RNAseq
+
+- we use salmon with bam files mapped to transcriptome for quantification
+
+### CHIPseq
+
+- defaults parameters
+- de-duplication for all samples
+- bowtie is set up with these extra parameters: `--sensitive-local -X 1000`
+- macs_gsize needs to be setup for each species accordingly ... tools
+
+### CUT&RUN
+
+- defaults parameters
+- turn on dedup_target_reads
+
+### ATACseq
+
+All peaks `nf-core-atac-seq_shift`:
+- shift is on
+- keep_dup is false
+
+NFR peaks `nf-core-atac-seq_shift_NFR`:
+- same than previous except parameters for Aligmentsieve:
+  - `--minFragmentLength 0`
+  - `--maxFragmentLength 120`
+
 ## Nextflow in Seqera platform
 
 - Create an user here: https://cloud.seqera.io/login
