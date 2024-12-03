@@ -2,23 +2,28 @@
 
 Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
-## Paramters
+## Parameters
 
 ### RNAseq
 
-- we use salmon with bam files mapped to transcriptome for quantification
+- we use salmon with bam files produced by STAR mapped to transcriptome for quantification
 
 ### CHIPseq
 
-- defaults parameters
+- can analyze multiple antibodies in one pipeline run (pipeline splits samples by antibody)
+- default parameters
 - de-duplication for all samples
-- bowtie is set up with these extra parameters: `--sensitive-local -X 1000`
-- macs_gsize needs to be setup for each species accordingly ... tools
+- bowtie is set up with these extra parameters: `--sensitive-local -X 1000` (Note from Alex: this is only true in seqera dev environment, not production. do we want to change production to match?)
+- macs_gsize needs to be setup for each species accordingly ... tools (Note from Alex: I thought this was only true for ATACseq? If true for CHIPseq, why not also for cutandrun?)
 
 ### CUT&RUN
 
-- defaults parameters
+- run once per antibody (because pipeline does not split samples by antibody)
 - turn on dedup_target_reads
+- use both macs2 and seacr for peakcalling (list macs2 first so it is used as primary)
+- normalization mode is set to CPM (can be changed if client has spike-in samples)
+- depending on the number of samples, user may want to skip deeptools processes involving all samples
+- processes including SAMTOOLS_SORT, BEDTOOLS_SORT, SAMTOOLS_CUSTOMVIEW, FRAG_LEN_HIST, and DEEPTOOLS_PLOTHEATMAP_GENE_ALL are given more memory than nf-core default
 
 ### ATACseq
 
