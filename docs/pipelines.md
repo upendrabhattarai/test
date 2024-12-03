@@ -6,23 +6,23 @@ Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
 ### RNAseq
 
-- we use salmon with bam files produced by STAR mapped to transcriptome for quantification
+- We use salmon with bam files produced by STAR mapped to transcriptome for quantification
 
 ### CHIPseq
 
-- can analyze multiple antibodies in one pipeline run (pipeline splits samples by antibody)
-- default parameters
+- It can analyze multiple antibodies in one pipeline run (pipeline splits samples by antibody)
+- Default parameters
 - de-duplication for all samples
-- bowtie is set up with these extra parameters: `--sensitive-local -X 1000` (Note from Alex: this is only true in seqera dev environment, not production. do we want to change production to match?)
-- macs_gsize needs to be setup for each species accordingly ... tools (Note from Alex: I thought this was only true for ATACseq? If true for CHIPseq, why not also for cutandrun?)
+- `bowtie` is set up with these extra parameters: `--sensitive-local -X 1000` (this is only true in seqera dev environment, not production)
+- `macs_gsize` needs to be setup for each species accordingly tools
 
 ### CUT&RUN
 
-- run once per antibody (because pipeline does not split samples by antibody)
-- turn on dedup_target_reads
-- use both macs2 and seacr for peakcalling (list macs2 first so it is used as primary)
-- normalization mode is set to CPM (can be changed if client has spike-in samples)
-- depending on the number of samples, user may want to skip deeptools processes involving all samples
+- Run once per antibody (because pipeline does not split samples by antibody)
+- Turn on `dedup_target_reads`
+- Use both `macs2` and `seacr` for peakcalling (list macs2 first so it is used as primary)
+- Normalization mode is set to `CPM` (can be changed if client has spike-in samples)
+- Depending on the number of samples, user may want to skip `deeptools` processes involving all samples
 - processes including SAMTOOLS_SORT, BEDTOOLS_SORT, SAMTOOLS_CUSTOMVIEW, FRAG_LEN_HIST, and DEEPTOOLS_PLOTHEATMAP_GENE_ALL are given more memory than nf-core default
 
 ### ATACseq
