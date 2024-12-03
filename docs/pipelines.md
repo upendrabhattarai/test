@@ -61,10 +61,11 @@ You can add more columns to this file with more metadata, and use this file as t
 
 ## Nextflow in O2
 
-Nextflow is available at `/n/app/bcbio/nextflow/nextflow`. 
-Singularity containers at available at `/n/app/singularity/containers/shared/bcbio/`.
+- Nextflow is available at `/n/app/bcbio/nextflow/nextflow`. 
+- Singularity containers at available at `/n/app/singularity/containers/shared/bcbio/`.
+- Cluster config: `/n/app/bcbio/nextflow/o2.config`
 
-An example of batch script is:
+An example of sbatch script is:
 
 ```
 #!/bin/bash
@@ -74,8 +75,8 @@ An example of batch script is:
 #SBATCH --time=1-23:59                 # Runtime in D-HH:MM format
 #SBATCH --nodes=1                      # Number of nodes (keep at 1)
 #SBATCH --ntasks=1                     # Number of tasks per node (keep at 1)
-#SBATCH --cpus-per-task=8            # CPU cores requested per task (change for threaded jobs)
-#SBATCH --mem=128G                     # Memory needed per node (total)
+#SBATCH --cpus-per-task=1            # CPU cores requested per task (change for threaded jobs)
+#SBATCH --mem=12G                     # Memory needed per node (total)
 #SBATCH --error=jobid_%j.err           # File to which STDERR will be written, including job ID
 #SBATCH --output=jobid_%j.out          # File to which STDOUT will be written, including job ID
 #SBATCH --mail-type=ALL                # Type of email notification (BEGIN, END, FAIL, ALL)
@@ -83,32 +84,13 @@ An example of batch script is:
 module load java/jdk-21.0.2
 export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
+
+/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity -c /n/app/bcbio/nextflow/o2.config -c /n/app/bcbio/nextflow/rnaseq.config --input samplesheet.csv --outdir this_folder -resume
 ```
 
 ### RNAseq
 
-Example of running in single node Nextflow/nf-core/rnaseq in O2.
-
-```
-#!/bin/bash
-
-#SBATCH --job-name=Nextflow      # Job name
-#SBATCH --partition=priority            # Partition name
-#SBATCH --time=1-23:59                 # Runtime in D-HH:MM format
-#SBATCH --nodes=1                      # Number of nodes (keep at 1)
-#SBATCH --ntasks=1                     # Number of tasks per node (keep at 1)
-#SBATCH --cpus-per-task=8            # CPU cores requested per task (change for threaded jobs)
-#SBATCH --mem=128G                     # Memory needed per node (total)
-#SBATCH --error=jobid_%j.err           # File to which STDERR will be written, including job ID
-#SBATCH --output=jobid_%j.out          # File to which STDOUT will be written, including job ID
-#SBATCH --mail-type=ALL                # Type of email notification (BEGIN, END, FAIL, ALL)
-
-module load java/jdk-21.0.2
-export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
-export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
-
-/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity,test --outdir this_folder -resume
-```
+Containers at `/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0`
 
 ### viralrecon
 
@@ -130,7 +112,6 @@ To run your data, prepare input file following this [doc](https://nf-co.re/viral
 ```
 /n/app/bcbio/nextflow/nextflow run nf-core/viralrecon -r 2.6.0 -profile singularity --outdir this_folder --input samplesheet.csv -resume
 ```
-
 
 ## Nextflow in FAS
 
