@@ -36,6 +36,9 @@ NFR peaks `nf-core-atac-seq_shift_NFR`:
   - `--minFragmentLength 0`
   - `--maxFragmentLength 120`
 
+**Note**: Recommendation to check the fragment length distribution after the run to make sure you're capturing the NFRs.
+**Note**: We don't need the MN(180, 247), DN (315, 473) and TN (558, 615), unless it's a specific case where we are looking at global shifts in accessibility
+
 ## Nextflow in Seqera platform
 
 - Create an user here: https://cloud.seqera.io/login
