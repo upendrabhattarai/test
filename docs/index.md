@@ -77,8 +77,8 @@ bcbioR::bcbio_templates(type="rnaseq", outpath="reports")
 Please, change to this common library path to perform your analysis: 
 
 ```
-bcbio::use_library("/n/app/bcbio/R4.3.1_singlecell")
-bcbioR::bcbio_templates(type="singlecell, outpath="reports")
+bcbioR::use_library("/n/app/bcbio/R4.3.1_singlecell")
+bcbioR::bcbio_templates(type="singlecell", outpath="reports")
 ```
 
 ## ChipSeq
@@ -86,8 +86,8 @@ bcbioR::bcbio_templates(type="singlecell, outpath="reports")
 Please, change to this common library path to perform your analysis: 
 
 ```
-bcbio::use_library("/n/app/bcbio/R4.3.1_chipseq")
-bcbioR::bcbio_templates(type="chipseq, outpath="reports")
+bcbioR::use_library("/n/app/bcbio/R4.3.1_chipseq")
+bcbioR::bcbio_templates(type="chipseq", outpath="reports")
 ```
 
 # bcbioR supported templates
