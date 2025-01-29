@@ -10,8 +10,8 @@ Go to each analysis-type section to learn how to use our platform.
 
 * Using O2 open OnDemand: 
     * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
-    * Start Rstudio with these modules on: `gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
-    * Add `--exclude=compute-f-17-[09-25]` to the 'Slurm Custom Arguments' field
+    * Remove any path you load using the R env variables that could be in your `.Rprofile` or `.bashrc`
+    * Start Rstudio with these modules on: `git/2.9.5 gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
     * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1")`
 
 * Load bcbioR with `library(bcbioR)`
@@ -56,6 +56,7 @@ usethis::use_git()
 
 Push this project to GitHub following these steps:
 
+* Make sure you have git in your path
 * Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
   * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
 * Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
