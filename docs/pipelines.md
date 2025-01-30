@@ -93,7 +93,10 @@ module load java/jdk-21.0.2
 export NXF_APPTAINER_CACHEDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 export NXF_SINGULARITY_LIBRARYDIR=/n/app/singularity/containers/shared/bcbio/nf-core-rnaseq-3.14.0
 
-/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity -c /n/app/bcbio/nextflow/o2.config -c /n/app/bcbio/nextflow/rnaseq.config --input samplesheet.csv --outdir this_folder -resume
+/n/app/bcbio/nextflow/nextflow run nf-core/rnaseq -r 3.14.0 -profile singularity \
+    -c /n/app/bcbio/nextflow/o2.config -c /n/app/bcbio/nextflow/rnaseq.resources.config \
+    -params-file /n/app/bcbio/nextflow/rnaseq.json \
+    --input samplesheet.csv --outdir this_folder -resume
 ```
 
 ### RNAseq
