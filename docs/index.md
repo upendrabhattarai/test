@@ -102,7 +102,7 @@ Since our loaded libraries were wiped when we created a new project, we will nee
 library(bcbioR)
 ```
 
-Once again, let's just double check our version of bcbioR to make sure we are using version **0.3.*** or later.
+Once again, let's just double check our version of bcbioR to make sure we are using version **0.3.** or later.
 
 ```
 packageVersion("bcbioR")
