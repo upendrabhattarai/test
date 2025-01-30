@@ -8,22 +8,56 @@ Go to each analysis-type section to learn how to use our platform.
 
 ## Set up the package
 
-* Using O2 open OnDemand: 
+* Log onto O2 via the command line (first-time only): 
     * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
-    * Start Rstudio with these modules on: `git/2.9.5  gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
     * Remove any path you load using the R env variables that could be in your `.Rprofile` or `.bashrc`
-    * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1")`
+* Go to the [O2 Portal](https://o2portal.rc.hms.harvard.edu/) and select `HMS-RC Application`, then `RStudio Environment`
+<p align="center"><img src="../img/O2_portal_page_with_label.png" width="700"></p>
 
-* Load bcbioR with `library(bcbioR)`
-* Make sure the version is **v0.3.*** with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment
+* Start Rstudio with using your desired partition, memory, core and time directives. Add these modules to "Modules to be loaded":
+  ```
+  git/2.9.5  gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0
+  ```
+   Click "Launch"
+
+<p align="center"><img src="../img/O2_portal_request.gif" width="700"></p>
+
+* Open RStudio by clicking on the "Connect to RStudio Server"
+
+<p align="center"><img src="../img/O2_connect_to_RStudio_with_label.png" width="700"></p>
+
+* When the session is started, set you library path typing this command in your console Rstudio window in order to be able to load bcbioR:
+
+```
+.libPaths("/n/app/bcbio/R4.3.1")
+```
+
+* Next, load bcbioR with:
+
+```
+library(bcbioR)
+```
+  
+* Check the package version of bcbioR using:
+
+```
+packageVersion("bcbioR")
+```
+
+Make sure the version is **v0.3.*** or later.
+
+<p align="center"><img src="../img/Version_check_bcbioR.gif" width="700"></p>
+
+> Note: If you are working in your local environment, install bcbioR with
+> ```
+> devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)
+> ``` 
 
 ## General Project
 
 Use the [hcbc app](https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758) to set up projects names. This name will be used for O2/FAS/github and dropbox. They may be already defined in the Trello card.
 
 This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https://usethis.r-lib.org) packages.
-
-Make sure the version is `v0.3.*` with this command `packageVersion("bcbioR")` or re-install with `devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)`, if you are in your own environment.
 
 First create Rstudio project:
 
@@ -37,16 +71,25 @@ usethis::proj_activate(project_path)
 This will restart the session in the project directory:
 
 ```
-# Make sure is v0.3*
-packageVersion("bcbioR")
-# check current library
+
+# check current library to make sure it is your expected path
 .libPaths()
-# set up needed library
-.libPaths("/n/app/bcbio/R4.3.1_rnaseq")
+# Reload bcbioR (wipe with project)
+library(bcbioR)
+# reload
+`.libPaths("/n/app/bcbio/R4.3.1_rnaseq")`
+`.libPaths("/n/app/bcbio/R4.3.1_singlecell")`
+`.libPaths("/n/app/bcbio/R4.3.1_chipseq")`
+`.libPaths("/n/app/bcbio/R4.3.1_cellchat")`
+`.libPaths("/n/app/bcbio/R4.3.1_methylation")`
 # check package version again
 packageVersion("bcbioR")
 # Set this library for future use - only once
 bcbioR::use_library("/n/app/bcbio/R4.3.1_rnaseq")
+bcbioR::use_library("/n/app/bcbio/R4.3.1_singlecell")`
+bcbioR::use_library("/n/app/bcbio/R4.3.1_chipseq")`
+bcbioR::use_library("/n/app/bcbio/R4.3.1_cellchat")`
+bcbioR::use_library("/n/app/bcbio/R4.3.1_methylation")`
 # Deploy base project
 bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 # Start local git repository
