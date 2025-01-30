@@ -10,8 +10,8 @@ Go to each analysis-type section to learn how to use our platform.
 
 * Using O2 open OnDemand: 
     * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
+    * Start Rstudio with these modules on: `git/2.9.5  gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
     * Remove any path you load using the R env variables that could be in your `.Rprofile` or `.bashrc`
-    * Start Rstudio with these modules on: `git/2.9.5 gcc/9.2.0 imageMagick/7.1.0 geos/3.10.2 cmake/3.22.2 R/4.3.1 fftw/3.3.10 gdal/3.1.4 udunits/2.2.28  boost/1.75.0`
     * When the session is started, set you library path typing this command in your console Rstudio window:  `.libPaths("/n/app/bcbio/R4.3.1")`
 
 * Load bcbioR with `library(bcbioR)`
