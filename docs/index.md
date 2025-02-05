@@ -126,22 +126,125 @@ bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 
 ### Setting up GitHub
 
-
+Now we will need to start the Git Repository using this command:
 
 ```
-# Start local git repository
-# Don't commit files and restart session
 usethis::use_git()
 ```
 
+This will return:
+
+```
+✔ Setting active project to "/home/wig051/git_demo".
+✔ Initialising Git repo.
+✔ Adding ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to .gitignore.
+ℹ There are 6 uncommitted files:
+• .gitignore
+• .Rprofile
+• DataManagement-Checklist.pdf
+• information.R
+• README.md
+• reports/
+! Is it ok to commit them?
+
+1: Yes
+2: Negative
+3: Not now
+```
+
+We do not want to commit these files yet, so select either `Negative`, `No way` or `No`.
+
+Next, you will be prompted as to whether you want to restart R:
+
+```
+A restart of RStudio is required to activate the Git pane.
+Restart now?
+
+1: For sure
+2: Negative
+3: Not now
+```
+
+We will need to restart R in order to get the Git pane in our R Studio, so select `For sure` or `Yeah`. We show this transition below:
+
+<p align="center"><img src="../img/Git_pane_RStudio.png" width="1000"></p>
+
 Push this project to GitHub following these steps:
 
-* Make sure you have git in your path
-* Only once every 30 days, set up your github credentials: `usethis::gh_token_help()`
-  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
-* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
+```
+usethis::use_github(org="hbc",private=TRUE)
+```
 
-Read the REAME and any other Management checklist that is in the project folder.
+```
+ℹ Defaulting to "https" Git protocol.
+✔ Setting active project to "/home/wig051/git_demo".
+Error in `guess_local_default_branch()`:
+✖ Can't find any local branches.
+  Do you need to make your first commit?
+Run `rlang::last_trace()` to see where the error occurred.
+```
+
+```
+usethis::gh_token_help()
+```
+
+```
+• GitHub host: "https://github.com"
+• Personal access token for "https://github.com": <unset>
+☐ To create a personal access token, call usethis::create_github_token().
+☐ To store a token for current and future use, call
+  gitcreds::gitcreds_set().
+ℹ Read more in the Managing Git(Hub) Credentials article.
+```
+
+The problem might be that you do not have a valid GitHub Token. In order to get a valid GitHub Token you can use:
+
+```
+usethis::gh_token_help()
+```
+
+This command should return:
+
+```
+• GitHub host: "https://github.com"
+• Personal access token for "https://github.com": <unset>
+☐ To create a personal access token, call usethis::create_github_token().
+☐ To store a token for current and future use, call
+  gitcreds::gitcreds_set().
+ℹ Read more in the Managing Git(Hub) Credentials article.
+```
+
+We can see that it is recommending that we create a GitHub Token with this command:
+
+```
+usethis::create_github_token()
+```
+
+This will take you to a GitHub HTML. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
+
+<p align="center"><img src="../img/Git_token_Part_1.gif" width="700"></p>
+
+Next, you will want to copy your GitHub Token and go back to RStudio.
+
+
+
+Read the REAME and any other Management checklist that is in the project folder. Now we need to set our credentials by using the command:
+
+```
+gitcreds::gitcreds_set()
+```
+
+Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:
+
+```
+-> Adding new credentials...
+-> Removing credentials from cache...
+-> Done.
+```
+
+These steps are summarized in the GIF below:
+
+<p align="center"><img src="../img/Git_token_Part_2.gif" width="700"></p>
 
 ## RNAseq
 
@@ -152,6 +255,9 @@ Use this common library path to perform your analysis: `bcbio::use_library("/n/a
 ```
 bcbioR::bcbio_templates(type="rnaseq", outpath="reports")
 ```
+
+  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
+* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
 ## scRNAseq
 
