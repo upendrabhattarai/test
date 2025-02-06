@@ -126,6 +126,77 @@ bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 
 ### Setting up GitHub
 
+#### Making your `.gitconfig` file (First time on O2 only)
+
+If it is your first time using Git on O2, you will need to do make your `.gitconfig` file.  In order to do this, you will need to run the following command:
+
+```
+usethis::use_git_config(user.name = "your_GitHub_username", user.email = "your_email@gmail.com")
+```
+
+You will replace `your_GitHub_username` with your GitHub user name and `your_email@gmail.com` with the e-mail associated with your GitHub account.
+
+> Note: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
+
+You can check that you have successfully made this `.gitconfig` file by looking for the hidden file in your home directory. The content should look like:
+
+```
+`.gitconfig`
+
+```
+[user]
+	email = your_email@gmail.com
+	name = your_GitHub_username
+```
+```
+
+#### Creating a token
+
+```
+ℹ Defaulting to "https" Git protocol.
+Error in `usethis::use_github()`:
+✖ Unable to discover a GitHub personal access token.
+ℹ A token is required in order to create and push to a new repo.
+☐ Call usethis::gh_token_help() for help configuring a token.
+Run `rlang::last_trace()` to see where the error occurred.
+```
+
+Then you will need to create a new GitHub token. In order to create a GitHub token, you will need to run:
+
+We can see that it is recommending that we create a GitHub Token with this command:
+
+```
+usethis::create_github_token()
+```
+
+This will take you to a GitHub HTML. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
+
+<p align="center"><img src="../img/Git_token_Part_1.gif" width="700"></p>
+
+Next, you will want to copy your GitHub Token and go back to RStudio.
+
+Read the REAME and any other Management checklist that is in the project folder. Now we need to set our credentials by using the command:
+
+```
+gitcreds::gitcreds_set()
+```
+
+Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:
+
+```
+-> Adding new credentials...
+-> Removing credentials from cache...
+-> Done.
+```
+
+These steps are summarized in the GIF below:
+
+<p align="center"><img src="../img/Git_token_Part_2.gif" width="700"></p>
+
+---
+
+#### Scratch space
+
 Now we will need to start the Git Repository using this command:
 
 ```
@@ -153,6 +224,8 @@ This will return:
 ```
 
 We do not want to commit these files yet, so select either `Negative`, `No way` or `No`.
+
+**Alex are we sure we don't want to commit?**
 
 Next, you will be prompted as to whether you want to restart R:
 
@@ -184,67 +257,16 @@ Error in `guess_local_default_branch()`:
 Run `rlang::last_trace()` to see where the error occurred.
 ```
 
-```
-usethis::gh_token_help()
-```
-
-```
-• GitHub host: "https://github.com"
-• Personal access token for "https://github.com": <unset>
-☐ To create a personal access token, call usethis::create_github_token().
-☐ To store a token for current and future use, call
-  gitcreds::gitcreds_set().
-ℹ Read more in the Managing Git(Hub) Credentials article.
-```
-
-The problem might be that you do not have a valid GitHub Token. In order to get a valid GitHub Token you can use:
-
-```
-usethis::gh_token_help()
-```
-
-This command should return:
-
-```
-• GitHub host: "https://github.com"
-• Personal access token for "https://github.com": <unset>
-☐ To create a personal access token, call usethis::create_github_token().
-☐ To store a token for current and future use, call
-  gitcreds::gitcreds_set().
-ℹ Read more in the Managing Git(Hub) Credentials article.
-```
-
-We can see that it is recommending that we create a GitHub Token with this command:
-
-```
-usethis::create_github_token()
-```
-
-This will take you to a GitHub HTML. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
-
-<p align="center"><img src="../img/Git_token_Part_1.gif" width="700"></p>
-
-Next, you will want to copy your GitHub Token and go back to RStudio.
 
 
 
-Read the REAME and any other Management checklist that is in the project folder. Now we need to set our credentials by using the command:
 
-```
-gitcreds::gitcreds_set()
-```
 
-Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:
 
-```
--> Adding new credentials...
--> Removing credentials from cache...
--> Done.
-```
+  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
+* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
-These steps are summarized in the GIF below:
 
-<p align="center"><img src="../img/Git_token_Part_2.gif" width="700"></p>
 
 ## RNAseq
 
@@ -256,8 +278,6 @@ Use this common library path to perform your analysis: `bcbio::use_library("/n/a
 bcbioR::bcbio_templates(type="rnaseq", outpath="reports")
 ```
 
-  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
-* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
 
 ## scRNAseq
 
