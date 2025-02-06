@@ -259,7 +259,15 @@ Run `rlang::last_trace()` to see where the error occurred.
 ```
 
 
-
+```
+ℹ Defaulting to "https" Git protocol.
+✔ Setting active project to "/home/wig051/git_demo".
+Error in `usethis::use_github()`:
+✖ Unable to discover a GitHub personal access token.
+ℹ A token is required in order to create and push to a new repo.
+☐ Call usethis::gh_token_help() for help configuring a token.
+Run `rlang::last_trace()` to see where the error occurred.
+```
 
 
 
