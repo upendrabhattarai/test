@@ -141,14 +141,15 @@ You will replace `your_GitHub_username` with your GitHub user name and `your_ema
 You can check that you have successfully made this `.gitconfig` file by looking for the hidden file in your home directory. The content should look like:
 
 ```
-`.gitconfig`
+.gitconfig
+```
 
 ```
 [user]
 	email = your_email@gmail.com
 	name = your_GitHub_username
 ```
-```
+
 
 #### Creating a token
 
