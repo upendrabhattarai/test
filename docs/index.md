@@ -124,9 +124,11 @@ Now, we will use `bcbioR` to set-up the directory structure that we will be usin
 bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 ```
 
-### Setting up GitHub
+### Setting up GitHub and RStudio
 
-#### Making your `.gitconfig` file (First time on O2 only)
+Now, we will connect O2 to GitHub. First, check in your Home directory if a `.gitconfig` file exists. If it does not follow the instructions below to create a `.gitconfig` file. ***You will only need to do this once.*** If you already have this created, you can skip to the [next section]()
+
+#### Making your `.gitconfig` file
 
 If it is your first time using Git on O2, you will need to do make your `.gitconfig` file.  In order to do this, you will need to run the following command:
 
@@ -136,13 +138,9 @@ usethis::use_git_config(user.name = "your_GitHub_username", user.email = "your_e
 
 You will replace `your_GitHub_username` with your GitHub user name and `your_email@gmail.com` with the e-mail associated with your GitHub account.
 
-> Note: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
+> Reminder: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
 
-You can check that you have successfully made this `.gitconfig` file by looking for the hidden file in your home directory. The content should look like:
-
-```
-.gitconfig
-```
+Click on circular arrow in the top right of the `File` tab called `Refresh file listing`. You can check that you have successfully made this `.gitconfig` file by looking for the hidden file in your home directory. The content should look like:
 
 ```
 [user]
@@ -150,11 +148,84 @@ You can check that you have successfully made this `.gitconfig` file by looking 
 	name = your_GitHub_username
 ```
 
+#### Getting the Git tab
 
-#### Creating a token
+Now, we would like to get the Git tab into our Workspace Browser (where `Environment`, `History`, `Connections` and `Tutorial` tabs are located). We show this transition below:
+
+<p align="center"><img src="../img/Git_pane_RStudio.png" width="1000"></p>
+
+
+In order to do this we will use the following command:
+
+```
+usethis::use_git()
+```
+
+This command is the command one would usually use in order to make a commit. However, if we choose to not make a commit and then restart R, it will give us our Git tab in the Workspace Browser. This command should return:
+
+```
+✔ Setting active project to "/home/wig051/git_demo".
+✔ Initialising Git repo.
+✔ Adding ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to .gitignore.
+ℹ There are 6 uncommitted files:
+• .gitignore
+• .Rprofile
+• DataManagement-Checklist.pdf
+• information.R
+• README.md
+• reports/
+! Is it ok to commit them?
+
+1: Yes
+2: Negative
+3: Not now
+```
+
+We do not want to commit these files yet, so select one fo the answers like `Negative`, `No way` or `No`.
+
+> Note: It is unclear why Git gives us three choices. The possible choices are re-arranged each time and have different text. So your option may vary a bit from these, select one fo the appropriate options for **NOT** commiting.
+
+Next, you will be prompted as to whether you want to restart R:
+
+```
+A restart of RStudio is required to activate the Git pane.
+Restart now?
+
+1: For sure
+2: Negative
+3: Not now
+```
+
+We will need to restart R in order to get the Git tab in our R Studio, so select `For sure`, `Yeah` or some other option for answering in the affirmative. 
+
+#### Creating the first commit
+
+Now, we are going to create our first commit. In order to do this, we need to:
+
+1. Navigate to the Git tab in our Workspace Browser
+2. Left-click to check the "Staged" checkboxes next to `README.md` and `.gitignore` to select the files that we would like to add to our first commit
+3. Left-click "Commit" in the Git tab
+4. Add a message for our commit
+5. Left-click "Commit" underneath the textbox where we added the message for our commit
+6. Close both Git windows
+
+These steps are summarized in the GIF below:
+
+<p align="center"><img src="../img/Initial_commit.gif" width="1000"></p>
+
+#### Pushing our initial commit
+
+Now we will use the function to push these changes to GitHub with the following command:
+
+```
+usethis::use_github(org="hbc",private=TRUE)
+```
+
+If you already had a valid GitHub token it will push this repository to the HBC GitHub. However, if your token is expired or this is your first time using GitHub from O2, then you will get this message:
 
 ```
 ℹ Defaulting to "https" Git protocol.
+✔ Setting active project to "/home/wig051/git_demo".
 Error in `usethis::use_github()`:
 ✖ Unable to discover a GitHub personal access token.
 ℹ A token is required in order to create and push to a new repo.
@@ -162,17 +233,31 @@ Error in `usethis::use_github()`:
 Run `rlang::last_trace()` to see where the error occurred.
 ```
 
-Then you will need to create a new GitHub token. In order to create a GitHub token, you will need to run:
+If this is the case, then you will need to create a new GitHub token, click on the dropdown box below for instructions on how to create a new GitHub token.
 
-We can see that it is recommending that we create a GitHub Token with this command:
-
-```
+<details>
+<summary><b>Click here to see how to create a GitHub Token</b></summary>
+The first thing we will need to do when setting out GitHub token is to set-up our credential helper. We can do this by going to the left-clicking on the `Terminal` table in the Console Window. You may need to load Git in the Terminal using:<br>
+<pre>
+module load git
+</pre>
+Then you can provide the following line of code to store your GitHub token for future O2 sessions:
+<pre>
+git config --global credential.helper store
+</pre>
+This process is summarized in the GIF below:
+<p align="center"><img src="../img/Git_config.gif" width="1000"></p>
+Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:
+<pre>
 usethis::create_github_token()
-```
-
-This will take you to a GitHub HTML. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
-
+</pre>
+This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
 <p align="center"><img src="../img/Git_token_Part_1.gif" width="700"></p>
+</details>
+
+#### Creating a token
+
+
 
 Next, you will want to copy your GitHub Token and go back to RStudio.
 
@@ -198,76 +283,9 @@ These steps are summarized in the GIF below:
 
 #### Scratch space
 
-Now we will need to start the Git Repository using this command:
-
-```
-usethis::use_git()
-```
-
-This will return:
-
-```
-✔ Setting active project to "/home/wig051/git_demo".
-✔ Initialising Git repo.
-✔ Adding ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to .gitignore.
-ℹ There are 6 uncommitted files:
-• .gitignore
-• .Rprofile
-• DataManagement-Checklist.pdf
-• information.R
-• README.md
-• reports/
-! Is it ok to commit them?
-
-1: Yes
-2: Negative
-3: Not now
-```
-
-We do not want to commit these files yet, so select either `Negative`, `No way` or `No`.
-
-**Alex are we sure we don't want to commit?**
-
-Next, you will be prompted as to whether you want to restart R:
-
-```
-A restart of RStudio is required to activate the Git pane.
-Restart now?
-
-1: For sure
-2: Negative
-3: Not now
-```
-
-We will need to restart R in order to get the Git pane in our R Studio, so select `For sure` or `Yeah`. We show this transition below:
-
-<p align="center"><img src="../img/Git_pane_RStudio.png" width="1000"></p>
-
-Push this project to GitHub following these steps:
-
-```
-usethis::use_github(org="hbc",private=TRUE)
-```
-
-```
-ℹ Defaulting to "https" Git protocol.
-✔ Setting active project to "/home/wig051/git_demo".
-Error in `guess_local_default_branch()`:
-✖ Can't find any local branches.
-  Do you need to make your first commit?
-Run `rlang::last_trace()` to see where the error occurred.
-```
 
 
-```
-ℹ Defaulting to "https" Git protocol.
-✔ Setting active project to "/home/wig051/git_demo".
-Error in `usethis::use_github()`:
-✖ Unable to discover a GitHub personal access token.
-ℹ A token is required in order to create and push to a new repo.
-☐ Call usethis::gh_token_help() for help configuring a token.
-Run `rlang::last_trace()` to see where the error occurred.
-```
+
 
 
 
