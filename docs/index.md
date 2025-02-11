@@ -240,60 +240,43 @@ If this is the case, then you will need to create a new GitHub token, click on t
 The first thing we will need to do when setting out GitHub token is to set-up our credential helper. We can do this by going to the left-clicking on the `Terminal` table in the Console Window. You may need to load Git in the Terminal using:<br>
 <pre>
 module load git
-</pre>
-Then you can provide the following line of code to store your GitHub token for future O2 sessions:
+</pre><br>
+Then you can provide the following line of code to store your GitHub token for future O2 sessions:<br>
 <pre>
 git config --global credential.helper store
-</pre>
-This process is summarized in the GIF below:
-<p align="center"><img src="../img/Git_config.gif" width="1000"></p>
-Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:
+</pre><br>
+This process is summarized in the GIF below:<br>
+<p align="center"><img src="../img/Git_config.gif" width="1000"></p><br>
+Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:<br>
 <pre>
 usethis::create_github_token()
-</pre>
-This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:
-<p align="center"><img src="../img/Git_token_Part_1.gif" width="700"></p>
-</details>
-
-#### Creating a token
-
-
-
-Next, you will want to copy your GitHub Token and go back to RStudio.
-
-Read the REAME and any other Management checklist that is in the project folder. Now we need to set our credentials by using the command:
-
-```
+</pre><br>
+This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:<br>
+<p align="center"><img src="../img/GitHub_token_Part_1.gif" width="1000"></p>
+Next, you will want to copy your GitHub Token and go back to RStudio. Now we need to set our credentials by using the command:<br>
+<pre>
 gitcreds::gitcreds_set()
-```
-
-Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:
-
-```
+</pre>
+Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:<br>
+<pre>
 -> Adding new credentials...
 -> Removing credentials from cache...
 -> Done.
-```
+</pre>
+These steps are summarized in the GIF below:<br>
+<p align="center"><img src="../img/GitHub_token_Part_2.gif" width="1000"></p><br>
+Now you should have a file called <code>.git-credentials</code> in your Home directory and it should look like:
+<pre>
+https://PersonalAccessToken:YOUR_GITHUB_TOKEN@github.com
+</pre><br>
+Where <code>YOUR_GITHUB_TOKEN</code> has been replaced with your GitHub Token. Next, try running the push to the HBC GitHub again with:<br>
+<pre>
+usethis::use_github(org="hbc",private=TRUE)
+</pre>
+<hr />
+</details>
 
-These steps are summarized in the GIF below:
-
-<p align="center"><img src="../img/Git_token_Part_2.gif" width="700"></p>
-
----
-
-#### Scratch space
-
-
-
-
-
-
-
-
-  * **NOTE** You may want to run this first to keep this token working in future sessions in O2/FAS: `git config --global credential.helper store`
-* Push repository to HBC github as private: `usethis::use_github(org="hbc",private=TRUE)`
-
-
+## Change name in Guideline Push with GUI
 
 ## RNAseq
 
