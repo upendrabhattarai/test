@@ -126,9 +126,7 @@ Next, we need to set the library that `bcbioR` will use each time you open up th
 Now, we will use `bcbioR` to set-up the directory structure that we will be using for our analysis using the following command:
 
 ```
-bcbioR::bcbio_templates(type="base", outpath=".", org="
-
-")
+bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 ```
 
 ### Setting up GitHub and RStudio
