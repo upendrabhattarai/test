@@ -4,7 +4,7 @@ Welcome to our Platform guidelines web-page. Here analysts and developers will f
 
 We are developing platforms for each analysis type we have experience with at HCBC.
 
-Go to each analysis-type section to learn how to use our platform.
+Most analyses will follow the similar trajectory for set-up. We will note where the trajectories diverge with tables where you will select the appropriate analysis.
 
 ## Set up the package
 
@@ -28,19 +28,19 @@ Open RStudio by clicking on the "Connect to RStudio Server"
 
 <p align="center"><img src="../img/O2_connect_to_RStudio_with_label.png" width="700"></p>
 
-When the session is started, set you library path typing this command in your console Rstudio window in order to be able to load bcbioR:
+When the session is started, set your library path by typing this command in your console Rstudio window in order to be able to load `bcbioR`:
 
 ```
 .libPaths("/n/app/bcbio/R4.3.1")
 ```
 
-Next, load bcbioR with:
+Next, load `bcbioR` with:
 
 ```
 library(bcbioR)
 ```
 
-Check the package version of bcbioR using:
+Check the package version of `bcbioR` using:
 
 ```
 packageVersion("bcbioR")
@@ -50,20 +50,25 @@ Make sure the version is **0.3.*** or later.
 
 <p align="center"><img src="../img/Version_check_bcbioR.gif" width="700"></p>
 
-> Note: If you are working in your local environment, install bcbioR with
+> Note: If you are working in your local environment, install `bcbioR` with
 > ```
 > devtools::install_github("bcbio/bcbioR",build_manual = TRUE, build_vignettes = TRUE)
 > ``` 
 
 ## General Project
 
-Use this [HCBC app](https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758) to set up a project's name. This name will be used for O2, FAS, GitHub and Dropbox. They may be already defined in the Trello card.
+Use the app in the dropdown below to use the HBC app to set up a project's name. This name will be used for O2, FAS, GitHub and Dropbox. This name is likely already defined in the Trello card.
+
+<details>
+<summary><b>Click here to see the HBC app for naming a project</b></summary>
+<p align="center"><iframe src="https://hcbc.connect.hms.harvard.edu/content/8cd62872-0ec9-4905-8920-c745d2375758/" width="800px" height="1000px" data-external="1"></iframe></p>
+</details>
 
 This set up needs [bcbioR](https://github.com/bcbio/bcbioR) and [usethis](https://usethis.r-lib.org) packages. If you are working on the O2 Portal `usethis` is within `/n/app/bcbio/R4.3.1`, so you will not need to install it. Also, `usethis` is a dependency of `bcbioR`, so if you are working locally it should have come along with the download of `bcbioR`.
 
 ### Create the Rstudio project
 
-Assign the path that you will be using as the path for your project to the object `project_path` into the `PIs` space on O2:
+Assign the path that you will be using as the path for your project to the object `project_path` into the `/n/data1/cores/bcbio/PIs` space on O2:
 
 ```
 project_path <- "/n/data1/cores/bcbio/PIs/PI_name/lastname_postdoc_rnaseq_human_heart_hbc00000"
@@ -75,7 +80,7 @@ Now, we will need to create a directory using this path to put our analysis in. 
 dir.create(project_path)
 ```
 
-Now, we can open a Rproject for our analysis in this path using:
+Now, we can open an Rproject for our analysis in this path using:
 
 ```
 usethis::proj_activate(project_path)
@@ -102,13 +107,13 @@ Since our loaded libraries were wiped when we created a new project, we will nee
 library(bcbioR)
 ```
 
-Once again, let's just double check our version of bcbioR to make sure we are using version **0.3.** or later.
+Once again, let's just double check our version of `bcbioR` to make sure we are using version **0.3.** or later.
 
 ```
 packageVersion("bcbioR")
 ```
 
-Next we need to set the library that `bcbioR` will use each time you open up this RStudio project. By using the `bcbioR::use_library()`, you will be adding the path to your project `.Rprofile` and this will be sourced each time when you open the RStudio project.
+Next, we need to set the library that `bcbioR` will use each time you open up this RStudio project. By using the `bcbioR::use_library()`, you will be adding the path to your project `.Rprofile` and this will be sourced each time when you open this RStudio project.
 
 | Type of Analysis | `bcbioR::use_library()` command |
 |:---:|:---|
@@ -134,26 +139,29 @@ Now, we will connect O2 with GitHub. First, check in your Home directory if a `.
 	name = your_GitHub_username
 ```
 
-Where `your_email@gmail.com` is the e-mail associated with your GitHub account and `your_GitHub_username` is your GitHub user name.
+Where `your_email@gmail.com` is the e-mail associated with your GitHub account and `your_GitHub_username` is your GitHub username.
 
 If you do not have a `.gitconfig` file in your Home directory, follow the instructions in the dropdown below to create a `.gitconfig` file. 
 
 <details>
 <summary><b>Click here for instructions for making a <code>.gitconfig</code> file</b></summary>
-In order to make a <code>.gitconfig</code>, you will need to run the following command:<br>
+<br>In order to make a <code>.gitconfig</code>, you will need to run the following command:<br><br>
 <pre>
 usethis::use_git_config(user.name = "your_GitHub_username", user.email = "your_email@gmail.com")
-</pre><br>
-You will replace <code>your_GitHub_username</code> with your GitHub user name and <code>your_email@gmail.com</code> with the e-mail associated with your GitHub account.<br>
+</pre>
+You will replace <code>your_GitHub_username</code> with your GitHub username and <code>your_email@gmail.com</code> with the e-mail associated with your GitHub account.<br><br>
 <blockquote>
 Reminder: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
-</blockquote><br>
-Click on circular arrow in the top right of the <code>File</code> tab called <code>Refresh file listing</code>. You can check that you have successfully made this <code>.gitconfig</code> file by looking for the hidden file in your home directory. The content should look like:<br>
+</blockquote>
+Click on circular arrow in the top right of the <code>Files</code> tab called <code>Refresh file listing</code>. You can check that you have successfully made this <code>.gitconfig</code> file by looking for the hidden file in your home directory. The content should look like:<br><br>
 <pre>
 [user]
 	email = your_email@gmail.com
 	name = your_GitHub_username
 </pre>
+<blockquote>
+Note: In order to see hidden file in your file browser on the O2 Portal, you will need to click on the cog in the top right of the <code>Files</code> tab and select <code>Show Hidden Files</code>.
+</blockquote>
 <hr />
 </details>
 
@@ -190,9 +198,9 @@ This command is the command one would usually use in order to make a commit. How
 3: Not now
 ```
 
-We do not want to commit these files yet, so select one fo the answers like `Negative`, `No way` or `No`.
+We do not want to commit these files yet, so select one of the answers like `Negative`, `No way` or `No`.
 
-> Note: It is unclear why Git gives us three choices. The possible choices are re-arranged each time and have different text. So your option may vary a bit from these, select one fo the appropriate options for **NOT** commiting.
+> Note: It is unclear why Git gives us three choices. The possible choices are re-arranged each time and have different text. So your option may vary a bit from these, select one of the appropriate options for **NOT** commiting.
 
 Next, you will be prompted as to whether you want to restart R:
 
@@ -213,9 +221,9 @@ Now, we are going to create our first commit. In order to do this, we need to:
 
 1. Navigate to the Git tab in our Workspace Browser
 2. Left-click to check the "Staged" checkboxes next to `README.md` and `.gitignore` to select the files that we would like to add to our first commit
-3. Left-click "Commit" in the Git tab
+3. Left-click <kbd>Commit</kbd> in the Git tab
 4. Add a message for our commit
-5. Left-click "Commit" underneath the textbox where we added the message for our commit
+5. Left-click <kbd>Commit</kbd> underneath the textbox where we added the message for our commit
 6. Close both Git windows
 
 These steps are summarized in the GIF below:
@@ -230,7 +238,27 @@ Now we will use the function to push these changes to GitHub with the following 
 usethis::use_github(org="hbc",private=TRUE)
 ```
 
-If you already had a valid GitHub token it will push this repository to the HBC GitHub. However, if your token is expired or this is your first time using GitHub from O2, then you will get this message:
+If you do not have a valid GitHub token, this will give you an error (see [below](#Expired-or-non-existent-GitHub-token)). If you already had a valid GitHub token, you will get this text in your console and it will push this repository to the HBC GitHub with the following output:
+
+```
+ℹ Defaulting to "https" Git protocol.
+✔ Setting active project to "/home/wig051/git_demo".
+✔ Creating private GitHub repository "hbc/git_demo".
+✔ Setting remote "origin" to "https://github.com/hbc/git_demo.git".
+✔ Pushing "master" branch to GitHub and setting "origin/master" as upstream branch.
+✔ Opening URL <https://github.com/hbc/git_demo>.
+```
+
+If the push is successful, then it will look like this GIF below:
+
+<p align="center"><img src="../img/GitHub_initial_push.gif" width="1000"></p>
+
+> Note: You might get a GitHub 404 error page (see image below) when you do your first push to GitHub. Just refresh the page in your browser and it should be resolve itself.
+> <p align="center"><img src="../img/GitHub_404_error_with_label.png" width="700"></p>
+
+##### Expired or non-existent GitHub token
+
+However, if your token is expired or this is your first time using GitHub from O2, then you will get this message:
 
 ```
 ℹ Defaulting to "https" Git protocol.
@@ -246,73 +274,103 @@ If this is the case, then you will need to create a new GitHub token, click on t
 
 <details>
 <summary><b>Click here to see how to create a GitHub Token</b></summary>
-The first thing we will need to do when setting out GitHub token is to set-up our credential helper. We can do this by going to the left-clicking on the `Terminal` table in the Console Window. You may need to load Git in the Terminal using:<br>
+<br>The first thing we will need to do when setting up our GitHub token is to set-up our credential helper. We can do this by left-clicking on the <code>Terminal</code> table in the Console Window. You may need to load Git in the Terminal using:<br><br>
 <pre>
 module load git
-</pre><br>
-Then you can provide the following line of code to store your GitHub token for future O2 sessions:<br>
+</pre>
+Then you can provide the following line of code to store your GitHub token for future O2 sessions:<br><br>
 <pre>
 git config --global credential.helper store
-</pre><br>
-This process is summarized in the GIF below:<br>
-<p align="center"><img src="../img/Git_config.gif" width="1000"></p><br>
-Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:<br>
+</pre>
+This process is summarized in the GIF below:<br><br>
+<p align="center"><img src="../img/Git_config.gif" width="1000"></p>
+Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:<br><br>
 <pre>
 usethis::create_github_token()
-</pre><br>
-This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:<br>
+</pre>
+This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:<br><br>
 <p align="center"><img src="../img/GitHub_token_Part_1.gif" width="1000"></p>
-Next, you will want to copy your GitHub Token and go back to RStudio. Now we need to set our credentials by using the command:<br>
+Next, you will want to copy your GitHub Token and go back to RStudio. We need to set our credentials by using the command:<br><br>
 <pre>
 gitcreds::gitcreds_set()
 </pre>
-Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:<br>
+Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should return:<br><br>
 <pre>
 -> Adding new credentials...
 -> Removing credentials from cache...
 -> Done.
 </pre>
-These steps are summarized in the GIF below:<br>
-<p align="center"><img src="../img/GitHub_token_Part_2.gif" width="1000"></p><br>
-Now you should have a file called <code>.git-credentials</code> in your Home directory and it should look like:
+These steps are summarized in the GIF below:<br><br>
+<p align="center"><img src="../img/GitHub_token_Part_2.gif" width="1000"></p>
+Now you should have a hidden file called <code>.git-credentials</code> in your Home directory and it should look like:<br><br>
 <pre>
 https://PersonalAccessToken:YOUR_GITHUB_TOKEN@github.com
-</pre><br>
-Where <code>YOUR_GITHUB_TOKEN</code> has been replaced with your GitHub Token. Next, try running the push to the HBC GitHub again with:<br>
+</pre>
+Where <code>YOUR_GITHUB_TOKEN</code> has been replaced with your GitHub Token.<br><br>
+<blockquote>
+Note: In order to see hidden file in your file browser on the O2 Portal, you will need to click on the cog in the top right of the <code>Files</code> tab and select <code>Show Hidden Files</code>.
+</blockquote>
+Next, try pushing your repository to the HBC GitHub again with:<br><br>
 <pre>
 usethis::use_github(org="hbc",private=TRUE)
 </pre>
 <hr />
 </details>
 
-## Change name in Guideline Push with GUI
+## Making your first edit
 
-## RNAseq
+We will now make an edit and push that to GitHub. 
 
-Use this common library path to perform your analysis: `bcbio::use_library("/n/app/bcbio/R4.3.1_rnaseq")`.
-* Follow the previous step to set up the [base](#general-project) project if you haven't done it already
-* Deploy templates with:
+### Editing the `README.md`
 
-```
-bcbioR::bcbio_templates(type="rnaseq", outpath="reports")
-```
+We are going to edit the `README.MD` using these steps:
 
+1. Open the `README.md`
+2. Change the header from `Guidelines` to the assigned HBC code for the project (`PI_brief_description_hbcXXXX`)
+3. Save the changes to `README.md`
+4. Select the checkbox in the "Staged" area of the Git tab for the `README.md`
+5. Left-click <kbd>Commit</kbd>
+6. Add a commit description
+7. Left-click commit again
+8. Left-click <kbd>Close</kbd> to close the pop-up window for the commit
 
-## scRNAseq
+These steps are summarized in the GIF below:
 
-Please, change to this common library path to perform your analysis: 
+<p align="center"><img src="../img/Guideline_commit_push.gif" width="1000"></p><br>
 
-```
-bcbioR::bcbio_templates(type="singlecell", outpath="reports")
-```
+### Pushing the edit to GitHub
 
-## ChipSeq
+Now that we have made this commit, we will push it to GitHub using these steps:
 
-Please, change to this common library path to perform your analysis: 
+1. After completing your commit, left-click <kbd>Push</kbd>
+2. Left-click <kbd>Close</kbd> to close the pop-up window for the push
+3. Close the additional pop-up window
+4. Navigate to the GitHub page for this repository
+5. Refresh the page if necessary
 
-```
-bcbioR::bcbio_templates(type="chipseq", outpath="reports")
-```
+You should now see the HBC code as the header to the `README.md` on GitHub. These steps are summarized in the GIF below:
+
+<p align="center"><img src="../img/Guideline_push.gif" width="1000"></p><br>
+
+## Using the template reports
+
+Many analyses have template reports that you can use. You can use these by using the approriate `bcbioR::bcbio_templates()` command from the table below:
+
+| Type of Analysis | `bcbioR::bcbio_templates()` command |
+|:---:|:---|
+| Bulk RNA-seq| `bcbioR::bcbio_templates(type="rnaseq", outpath="reports")` |
+| Single-cell RNA-seq | `bcbioR::bcbio_templates(type="singlecell", outpath="reports")` |
+| ChIP-Seq | `bcbioR::bcbio_templates(type="chipseq", outpath="reports")` |
+| CellChat | **Under development:** `bcbioR::bcbio_templates(type="singlecell_delux", outpath="reports")` |
+| DNA Methylation | **Under development** |
+
+# Tips for Moving Forward
+
+Now that we've gotten set-up for our project, here are a few last tips to try to make your experience smooth:
+
+- You are welcome to selectively commit and push the parts of these template reports that you would like to have on GitHub.
+- Try to avoid editing files directly on GitHub. If you do, it will be important that you `Pull` the repository onto O2 before continuing on with your work on O2. If you forget to do this pull and make commits on O2, you can fix it, but it is beyond the scope of this guide.
+- Use the checklist in the `README.md` to help keep track of your progress.
 
 # bcbioR supported templates
 
