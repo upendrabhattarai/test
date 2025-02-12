@@ -126,27 +126,36 @@ bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 
 ### Setting up GitHub and RStudio
 
-Now, we will connect O2 to GitHub. First, check in your Home directory if a `.gitconfig` file exists. If it does not follow the instructions below to create a `.gitconfig` file. ***You will only need to do this once.*** If you already have this created, you can skip to the [next section]()
-
-#### Making your `.gitconfig` file
-
-If it is your first time using Git on O2, you will need to do make your `.gitconfig` file.  In order to do this, you will need to run the following command:
-
-```
-usethis::use_git_config(user.name = "your_GitHub_username", user.email = "your_email@gmail.com")
-```
-
-You will replace `your_GitHub_username` with your GitHub user name and `your_email@gmail.com` with the e-mail associated with your GitHub account.
-
-> Reminder: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
-
-Click on circular arrow in the top right of the `File` tab called `Refresh file listing`. You can check that you have successfully made this `.gitconfig` file by looking for the hidden file in your home directory. The content should look like:
+Now, we will connect O2 with GitHub. First, check in your Home directory if a `.gitconfig` file exists. ***You should only need to do this once.*** The contents should look like:
 
 ```
 [user]
 	email = your_email@gmail.com
 	name = your_GitHub_username
 ```
+
+Where `your_email@gmail.com` is the e-mail associated with your GitHub account and `your_GitHub_username` is your GitHub user name.
+
+If you do not have a `.gitconfig` file in your Home directory, follow the instructions in the dropdown below to create a `.gitconfig` file. 
+
+<details>
+<summary><b>Click here for instructions for making a <code>.gitconfig</code> file</b></summary>
+In order to make a <code>.gitconfig</code>, you will need to run the following command:<br>
+<pre>
+usethis::use_git_config(user.name = "your_GitHub_username", user.email = "your_email@gmail.com")
+</pre><br>
+You will replace <code>your_GitHub_username</code> with your GitHub user name and <code>your_email@gmail.com</code> with the e-mail associated with your GitHub account.<br>
+<blockquote>
+Reminder: If you already have your GitHub username and e-mail associated with your GitHub account in your `.gitconfig` file then you can skip this step.
+</blockquote><br>
+Click on circular arrow in the top right of the <code>File</code> tab called <code>Refresh file listing</code>. You can check that you have successfully made this <code>.gitconfig</code> file by looking for the hidden file in your home directory. The content should look like:<br>
+<pre>
+[user]
+	email = your_email@gmail.com
+	name = your_GitHub_username
+</pre>
+<hr />
+</details>
 
 #### Getting the Git tab
 
