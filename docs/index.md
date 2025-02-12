@@ -14,7 +14,7 @@ Log onto O2 via the command line and check two things (first-time only):
    * Remove any path you load using the R env variables that could be in your `.Rprofile` or `.bashrc`
 
 Go to the [O2 Portal](https://o2portal.rc.hms.harvard.edu/) and select `HMS-RC Application`, then `RStudio Environment`
-<p align="center"><img src="../img/O2_portal_page_with_label.png" width="700"></p>
+<p align="center"><img src="./img/O2_portal_page_with_label.png" width="700"></p>
 
 Start Rstudio with using your desired partition, memory, core and time directives. Add these modules to "Modules to be loaded":
   ```
@@ -22,11 +22,11 @@ Start Rstudio with using your desired partition, memory, core and time directive
   ```
    Click "Launch"
 
-<p align="center"><img src="../img/O2_portal_request.gif" width="700"></p>
+<p align="center"><img src="img/O2_portal_request.gif" width="700"></p>
 
 Open RStudio by clicking on the "Connect to RStudio Server"
 
-<p align="center"><img src="../img/O2_connect_to_RStudio_with_label.png" width="700"></p>
+<p align="center"><img src="img/O2_connect_to_RStudio_with_label.png" width="700"></p>
 
 When the session is started, set your library path by typing this command in your console Rstudio window in order to be able to load `bcbioR`:
 
@@ -48,7 +48,7 @@ packageVersion("bcbioR")
 
 Make sure the version is **0.4.*** or later.
 
-<p align="center"><img src="../img/Version_check_bcbioR.gif" width="700"></p>
+<p align="center"><img src="./img/Version_check_bcbioR.gif" width="700"></p>
 
 > Note: If you are working in your local environment, install `bcbioR` with
 > ```
@@ -126,7 +126,9 @@ Next, we need to set the library that `bcbioR` will use each time you open up th
 Now, we will use `bcbioR` to set-up the directory structure that we will be using for our analysis using the following command:
 
 ```
-bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
+bcbioR::bcbio_templates(type="base", outpath=".", org="
+
+")
 ```
 
 ### Setting up GitHub and RStudio
@@ -173,7 +175,7 @@ Note: In order to see hidden file in your file browser on the O2 Portal, you wil
 
 Now, we would like to get the Git tab into our Workspace Browser (where `Environment`, `History`, `Connections` and `Tutorial` tabs are located). We show this transition below:
 
-<p align="center"><img src="../img/Git_pane_RStudio.png" width="1000"></p>
+<p align="center"><img src="./img/Git_pane_RStudio.png" width="1000"></p>
 
 
 In order to do this we will use the following command:
@@ -232,7 +234,7 @@ Now, we are going to create our first commit. In order to do this, we need to:
 
 These steps are summarized in the GIF below:
 
-<p align="center"><img src="../img/Initial_commit.gif" width="1000"></p>
+<p align="center"><img src="./img/Initial_commit.gif" width="1000"></p>
 
 #### Pushing our initial commit
 
@@ -255,10 +257,10 @@ If you do not have a valid GitHub token, this will give you an error (see [below
 
 If the push is successful, then it will look like this GIF below:
 
-<p align="center"><img src="../img/GitHub_initial_push.gif" width="1000"></p>
+<p align="center"><img src="./img/GitHub_initial_push.gif" width="1000"></p>
 
 > Note: You might get a GitHub 404 error page (see image below) when you do your first push to GitHub. Just refresh the page in your browser and it should be resolve itself.
-> <p align="center"><img src="../img/GitHub_404_error_with_label.png" width="700"></p>
+> <p align="center"><img src="./img/GitHub_404_error_with_label.png" width="700"></p>
 
 ##### Expired or non-existent GitHub token
 
@@ -287,13 +289,13 @@ Then you can provide the following line of code to store your GitHub token for f
 git config --global credential.helper store
 </pre>
 This process is summarized in the GIF below:<br><br>
-<p align="center"><img src="../img/Git_config.gif" width="1000"></p>
+<p align="center"><img src="./img/Git_config.gif" width="1000"></p>
 Now that we have let Git know to store our GitHub token, we can create one. In order to create a GitHub token, you will need to run:<br><br>
 <pre>
 usethis::create_github_token()
 </pre>
 This will take you to a GitHub Webpage. It may prompt you to sign-in to GitHub. From here, you need to name your token and select an expiration date for your token. Then, scroll to the bottom of the page and left-click <kbd>Generate token</kbd>. These step are summarized in the GIF below:<br><br>
-<p align="center"><img src="../img/GitHub_token_Part_1.gif" width="1000"></p>
+<p align="center"><img src="./img/GitHub_token_Part_1.gif" width="1000"></p>
 Next, you will want to copy your GitHub Token and go back to RStudio. We need to set our credentials by using the command:<br><br>
 <pre>
 gitcreds::gitcreds_set()
@@ -305,7 +307,7 @@ Paste in your copied GitHub token and hit <kbd>Return/Enter</kbd>. It should ret
 -> Done.
 </pre>
 These steps are summarized in the GIF below:<br><br>
-<p align="center"><img src="../img/GitHub_token_Part_2.gif" width="1000"></p>
+<p align="center"><img src="./img/GitHub_token_Part_2.gif" width="1000"></p>
 Now you should have a hidden file called <code>.git-credentials</code> in your Home directory and it should look like:<br><br>
 <pre>
 https://PersonalAccessToken:YOUR_GITHUB_TOKEN@github.com
@@ -340,7 +342,7 @@ We are going to edit the `README.MD` using these steps:
 
 These steps are summarized in the GIF below:
 
-<p align="center"><img src="../img/Guideline_commit_push.gif" width="1000"></p><br>
+<p align="center"><img src="./img/Guideline_commit_push.gif" width="1000"></p><br>
 
 ### Pushing the edit to GitHub
 
@@ -354,7 +356,7 @@ Now that we have made this commit, we will push it to GitHub using these steps:
 
 You should now see the HBC code as the header to the `README.md` on GitHub. These steps are summarized in the GIF below:
 
-<p align="center"><img src="../img/Guideline_push.gif" width="1000"></p><br>
+<p align="center"><img src="./img/Guideline_push.gif" width="1000"></p><br>
 
 ## Using the template reports
 
