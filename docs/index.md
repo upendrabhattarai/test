@@ -244,7 +244,7 @@ Now we will use the function to push these changes to GitHub with the following 
 usethis::use_github(org="hbc",private=TRUE)
 ```
 
-If you do not have a valid GitHub token, this will give you an error (see [below](#expired-or-non-existent-GitHub-token)). If you already have a valid GitHub token, you will get this text in your console and it will push this repository to the HBC GitHub with the following output:
+If you do not have a valid GitHub token, this will give you an error (see [below](#expired-or-non-existent-github-token)). If you already have a valid GitHub token, you will get this text in your console and it will push this repository to the HBC GitHub with the following output:
 
 ```
 ℹ Defaulting to "https" Git protocol.
