@@ -126,9 +126,7 @@ Next, we need to set the library that `bcbioR` will use each time you open up th
 Now, we will use `bcbioR` to set-up the directory structure that we will be using for our analysis using the following command:
 
 ```
-bcbioR::bcbio_templates(type="base", outpath=".", org="
-
-")
+bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 ```
 
 ### Setting up GitHub and RStudio
@@ -241,7 +239,7 @@ These steps are summarized in the GIF below:
 Now we will use the function to push these changes to GitHub with the following command:
 
 ```
-usethis::use_github(org="hbc",private=TRUE)
+usethis::use_github(org="hbc", private=TRUE)
 ```
 
 If you do not have a valid GitHub token, this will give you an error (see [below](#Expired-or-non-existent-GitHub-token)). If you already have a valid GitHub token, you will get this text in your console and it will push this repository to the HBC GitHub with the following output:
