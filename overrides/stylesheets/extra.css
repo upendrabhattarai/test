@@ -197,3 +197,7 @@ table {
 .md-typeset table:not([class]) {
      display: table;
  }
+
+pre {
+    background-color: #f5f5f5;
+}
