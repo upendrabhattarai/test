@@ -134,6 +134,8 @@ bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 Now, we will connect O2 with GitHub. First, check in your Home directory if a `.gitconfig` file exists. ***You should only need to do this once.*** The contents should look like:
 
 ```
+[credential]
+	helper = store
 [user]
 	email = your_email@gmail.com
 	name = your_GitHub_username
@@ -155,6 +157,8 @@ Reminder: If you already have your GitHub username and e-mail associated with yo
 </blockquote>
 Click on circular arrow in the top right of the <code>Files</code> tab called <code>Refresh file listing</code>. You can check that you have successfully made this <code>.gitconfig</code> file by looking for the hidden file in your home directory. The content should look like:<br><br>
 <pre>
+[credential]
+	helper = store
 [user]
 	email = your_email@gmail.com
 	name = your_GitHub_username
