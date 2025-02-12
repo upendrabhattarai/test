@@ -46,7 +46,7 @@ Check the package version of `bcbioR` using:
 packageVersion("bcbioR")
 ```
 
-Make sure the version is **0.3.*** or later.
+Make sure the version is **0.4.*** or later.
 
 <p align="center"><img src="../img/Version_check_bcbioR.gif" width="700"></p>
 
@@ -107,7 +107,7 @@ Since our loaded libraries were wiped when we created a new project, we will nee
 library(bcbioR)
 ```
 
-Once again, let's just double check our version of `bcbioR` to make sure we are using version **0.3.** or later.
+Once again, let's just double check our version of `bcbioR` to make sure we are using version **0.4.** or later.
 
 ```
 packageVersion("bcbioR")
