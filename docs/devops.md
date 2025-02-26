@@ -108,3 +108,17 @@ install.packages('NMF')
 install.packages("circlize")
 devtools::install_github("jinworks/CellChat")
 ```
+
+## Build environments
+
+### scGPT in FAS
+
+```
+conda create -p ./scgpt-2 python=3.9 pip ipykernel   -c conda-forge
+conda install ipywidgets -c conda-forge
+pip install torch==2.1.2
+conda install numpy
+pip install scgpt
+conda install wandb -c conda-forge
+python -m ipykernel install --prefix=/n/holylfs05/LABS/hsph_bioinfo/Lab/shared_resources/scgpt-2 --name 'dcgpt2' --display-name 'scgpt-2'
+```

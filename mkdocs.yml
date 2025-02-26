@@ -2,6 +2,7 @@ site_name: HCBC Platform
 nav:
   - Home: index.md
   - Pipelines: pipelines.md
+  - Tools environments: environments.md
   - Platform members: devops.md
 
 theme:
