@@ -6,7 +6,7 @@ Only available at FAS computing resources.
 
 Please, reach out to platform to access for the first time to this env:
 
-- Start a python notebook on the [ondemand web-page](https://rcood.rc.fas.harvard.edu/pun/sys/dashboard/batch_connect/sessions). You need to be connected to the VPN to be connected.
+- Start a python notebook on the [ondemand web-page](https://rcood.rc.fas.harvard.edu/pun/sys/dashboard/batch_connect/sessions). You need to be connected to the VPN to be connected. Use `gpu` partition and if you need more than one GPU, add these to the sbatch options `--gres=gpu:n`
 - Once connected (This step is tricky because you need to find the password to access the notebook)
     - Initiate a terminal session
     - `module load gcc/13.2.0-fasrc01`
