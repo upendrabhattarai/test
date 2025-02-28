@@ -19,7 +19,7 @@ Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
     - lifecycle 14 days for bigger than 1gb
     - Move output pipeline to project folder under `final` folder
 
-### Move that in/out of AWS
+### Move data in/out of AWS
 
 Follow this to copy data in and out of our AWS space:
 
