@@ -16,25 +16,6 @@ Content ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 - Each time we merge a Pull request, we need to make a release
 - Publish on Posit connect with a new name that matches the version
 
-## Data management
-
-### AWS 
-
-- Samplesheet input files for pipelines
-    - `pipelineName_PI_hbcNNNNNN`
-    - Have a copy in project folder in O2
-    - Manually removing weekly during platform meeting
-- Raw data is under `input` folder 
-    - Alex and Lorena and Emma can move data from O2/FAS to S3
-    - `pipelineName_PI_hbcNNNNNN`
-    - lifecycle 14 days
-- Pipeline outputs are under `results`:
-    - `pipelineName_PI_hbcNNNNNN`
-    - lifecycle 14 days for bigger than 1gb
-    - Move output pipeline to project folder under `final` folder
-- Data cleaning every platform meeting
-- Quarterly Evaluation: RNAseq, CHIPseq
-
 ## Configure to use posit package manager
 
 [source](https://packagemanager.posit.co/client/#/repos/bioconductor/setup?bioconductor_version=3.18)

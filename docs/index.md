@@ -8,6 +8,9 @@ Most analyses will follow the similar trajectory for set-up. We will note where 
 
 ## Set up the package
 
+<details>
+  <summary>O2 instructions- Click to expand!</summary>
+
 Log onto O2 via the command line and check two things (first-time only): 
 
    * Remove `bcbio` from you `PATH` by commenting the line in your `.bashrc` if you have it
@@ -33,7 +36,9 @@ When the session is started, set your library path by typing this command in you
 ```
 .libPaths("/n/app/bcbio/R4.3.1")
 ```
+</details>
 
+</p>
 Next, load `bcbioR` with:
 
 ```
@@ -88,7 +93,20 @@ usethis::proj_activate(project_path)
 
 > Note: This will restart the session in the project directory. This restart will clear the `.libPaths("/n/app/bcbio/R4.3.1")` and `library(bcbioR)` that we used earlier, so we will need to re-do them in the following steps. 
 
-### Setting up your workspace
+## Using the template reports
+
+Many analyses have template reports that you can use. You can use these by using the approriate `bcbioR::bcbio_templates()` command from the table below:
+
+| Type of Analysis | `bcbioR::bcbio_templates()` command |
+|:---:|:---|
+| Bulk RNA-seq ![](https://img.shields.io/badge/status-stable-blue)| `bcbioR::bcbio_templates(type="rnaseq", outpath="reports")` |
+| Single-cell RNA-seq ![](https://img.shields.io/badge/status-beta-yellow) | `bcbioR::bcbio_templates(type="singlecell", outpath="reports")` |
+| ChIP-Seq ![](https://img.shields.io/badge/status-beta-yellow) | `bcbioR::bcbio_templates(type="chipseq", outpath="reports")` |
+| CellChat ![](https://img.shields.io/badge/status-draft-grey)| **Under development:** `bcbioR::bcbio_templates(type="singlecell_delux", outpath="reports")` |
+| COSMX ![](https://img.shields.io/badge/status-draft-grey)| `bcbioR::bcbio_templates(type="spatial", outpath="reports")` |
+| DNA Methylation | **Under development** |
+
+## Setting up your workspace in O2
 
 We will now add the `.libPath()` that is appropriate for our type of analysis. You can use the table below to determine which `.libPath()` is appropriate for your analysis:
 
@@ -129,7 +147,7 @@ Now, we will use `bcbioR` to set-up the directory structure that we will be usin
 bcbioR::bcbio_templates(type="base", outpath=".", org="hcbc")
 ```
 
-### Setting up GitHub and RStudio
+## Setting up GitHub and RStudio
 
 Now, we will connect O2 with GitHub. First, check in your Home directory if a `.gitconfig` file exists. ***You should only need to do this once.*** The contents should look like:
 
@@ -169,7 +187,7 @@ Note: In order to see hidden file in your file browser on the O2 Portal, you wil
 <hr />
 </details>
 
-#### Getting the Git tab
+### Getting the Git tab
 
 Now, we would like to get the Git tab into our Workspace Browser (where `Environment`, `History`, `Connections` and `Tutorial` tabs are located). We show this transition below:
 
@@ -219,7 +237,7 @@ Restart now?
 
 We will need to restart R in order to get the Git tab in our R Studio, so select `For sure`, `Yeah` or some other option for answering in the affirmative. 
 
-#### Creating the first commit
+### Creating the first commit
 
 Now, we are going to create our first commit. In order to do this, we need to:
 
@@ -234,7 +252,7 @@ These steps are summarized in the GIF below:
 
 <p align="center"><img src="./img/Initial_commit.gif" width="1000"></p>
 
-#### Pushing our initial commit
+### Pushing our initial commit
 
 Now we will use the function to push these changes to GitHub with the following command:
 
@@ -260,7 +278,7 @@ If the push is successful, then it will look like this GIF below:
 > Note: You might get a GitHub 404 error page (see image below) when you do your first push to GitHub. Just refresh the page in your browser and it should be resolve itself.
 > <p align="center"><img src="./img/GitHub_404_error_with_label.png" width="700"></p>
 
-##### Expired or non-existent GitHub token
+#### Expired or non-existent GitHub token
 
 However, if your token is expired or this is your first time using GitHub from O2, then you will get this message:
 
@@ -356,18 +374,6 @@ You should now see the HBC code as the header to the `README.md` on GitHub. Thes
 
 <p align="center"><img src="./img/Guideline_push.gif" width="1000"></p><br>
 
-## Using the template reports
-
-Many analyses have template reports that you can use. You can use these by using the approriate `bcbioR::bcbio_templates()` command from the table below:
-
-| Type of Analysis | `bcbioR::bcbio_templates()` command |
-|:---:|:---|
-| Bulk RNA-seq| `bcbioR::bcbio_templates(type="rnaseq", outpath="reports")` |
-| Single-cell RNA-seq | `bcbioR::bcbio_templates(type="singlecell", outpath="reports")` |
-| ChIP-Seq | `bcbioR::bcbio_templates(type="chipseq", outpath="reports")` |
-| CellChat | **Under development:** `bcbioR::bcbio_templates(type="singlecell_delux", outpath="reports")` |
-| DNA Methylation | **Under development** |
-
 # Tips for Moving Forward
 
 Now that we've gotten set-up for our project, here are a few last tips to try to make your experience smooth:
@@ -375,19 +381,6 @@ Now that we've gotten set-up for our project, here are a few last tips to try to
 - You are welcome to selectively commit and push the parts of these template reports that you would like to have on GitHub.
 - Try to avoid editing files directly on GitHub. If you do, it will be important that you `Pull` the repository onto O2 before continuing on with your work on O2. If you forget to do this pull and make commits on O2, you can fix it, but it is beyond the scope of this guide.
 - Use the checklist in the `README.md` to help keep track of your progress.
-
-# bcbioR supported templates
-
-We used `bcbioR` to deploy folders and code to our project directories to improve robustness in our analysis.
-
-You can install `bcbioR` as indicated here: `https://github.com/bcbio/bcbioR/tree/main`
-
-- RNAseq ![](https://img.shields.io/badge/status-stable-blue)
-- ChipSeq ![](https://img.shields.io/badge/status-beta-yellow)
-- scRNAseq ![](https://img.shields.io/badge/status-beta-yellow)
-- CELLCHAT ![](https://img.shields.io/badge/status-draft-grey)
-- TEASeq ![](https://img.shields.io/badge/status-draft-grey)
-- COSMX ![](https://img.shields.io/badge/status-draft-grey)
 
 
 # Note
