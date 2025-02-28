@@ -2,6 +2,39 @@
 
 Content - ![](https://img.shields.io/badge/status-WorkInProgress-yellow)
 
+## Data Management
+
+### AWS 
+
+- Samplesheet input files for pipelines
+    - `pipelineName_PI_hbcNNNNNN`
+    - Have a copy in project folder in O2
+    - Manually removing weekly during platform meeting
+- Raw data is under `input` folder 
+    - See instructions below to move data in/out
+    - `pipelineName_PI_hbcNNNNNN`
+    - lifecycle 14 days
+- Pipeline outputs are under `results`:
+    - `pipelineName_PI_hbcNNNNNN`
+    - lifecycle 14 days for bigger than 1gb
+    - Move output pipeline to project folder under `final` folder
+
+### Move that in/out of AWS
+
+Follow this to copy data in and out of our AWS space:
+
+- Log in into transfer node in O2
+- Type `sudo -su bcbio` to be bcbio user
+- Use this command to copy data to AWS:
+```
+/usr/local/bin/aws s3 sync $FOLDER_WITH_FASTQ s3://hcbc-seqera/input/rnaseq_piname_hbcNNNN
+```
+- Use this command to copy data from AWS:
+```
+/usr/local/bin/aws s3 sync s3://hcbc-seqera/results/rnaseq_piname_hbcNNNN $FOLDER_PROJECT
+```
+**Make sure bcbio group has read/write access to the folders otherwise `aws` command won't work, but won't error either.**
+
 ## Parameters
 
 ### RNAseq
