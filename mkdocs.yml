@@ -1,9 +1,7 @@
-site_name: HCBC Platform
+site_name: Intro-to-R-mkdocs
 nav:
   - Home: index.md
-  - Pipelines: pipelines.md
-  - Tools environments: environments.md
-  - Platform members: devops.md
+  - Workshop Schedule: Workshop_schedule.md
 
 theme:
   name: material
@@ -128,3 +126,8 @@ plugins:
 
 extra_css:
   - stylesheets/extra.css
+
+extra:
+  analytics:
+  provider: google
+  property: UA-150953419-1
