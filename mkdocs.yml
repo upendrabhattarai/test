@@ -1,7 +1,7 @@
 site_name: Intro-to-R-mkdocs
 nav:
   - Home: index.md
-  - Workshop Schedule: Workshop_schedule.md
+  - Workshop Schedule: Workshop_Schedule.md
 
 theme:
   name: material
