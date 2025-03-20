@@ -126,8 +126,3 @@ plugins:
 
 extra_css:
   - stylesheets/extra.css
-
-extra:
-  analytics:
-  provider: google
-  property: UA-150953419-1
