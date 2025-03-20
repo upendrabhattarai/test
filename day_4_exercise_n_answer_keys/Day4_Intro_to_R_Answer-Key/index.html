@@ -1,0 +1,760 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../theme_img/HBC_logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Day4 Intro to R Answer Key - Intro-to-R-mkdocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#homework-answer-key-introduction-to-r-practice" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+
+
+<!-- Original Header -->
+
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Intro-to-R-mkdocs" class="md-header__button md-logo" aria-label="Intro-to-R-mkdocs" data-md-component="logo">
+      
+  <img src="../../theme_img/HBC_logo_2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Intro-to-R-mkdocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Day4 Intro to R Answer Key
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Workshop_Schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Workshop Schedule
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner">
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#homework-answer-key-introduction-to-r-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Homework answer key - Introduction to R practice
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Homework answer key - Introduction to R practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-vectorsfactors-and-dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating vectors/factors and dataframes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsetting-vectorsfactors-and-dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subsetting vectors/factors and dataframes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-components-from-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extracting components from lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-figures-with-ggplot2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating figures with ggplot2
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      </div>
+    </div>
+  </div>
+
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Day4 Intro to R Answer Key</h1>
+
+<h2 id="homework-answer-key-introduction-to-r-practice">Homework answer key - Introduction to R practice<a class="headerlink" href="#homework-answer-key-introduction-to-r-practice" title="Permanent link">&para;</a></h2>
+<h3 id="creating-vectorsfactors-and-dataframes">Creating vectors/factors and dataframes<a class="headerlink" href="#creating-vectorsfactors-and-dataframes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>We are performing RNA-Seq on cancer samples being treated with three different types of treatment (A, B, and P). You have 12 samples total, with 4 replicates per treatment. Write the R code you would use to construct your metadata table as described below.  </p>
+<ul>
+<li>Create the vectors/factors for each column (Hint: you can type out each vector/factor, or if you want the process go faster try exploring the <code>rep()</code> function).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="kc">...</span><span class="p">)</span><span class="w"> </span><span class="c1"># saved vectors/factors as variables and used c() or rep() function to create</span>
+</code></pre></div>
+<ul>
+<li>Put them together into a dataframe called <code>meta</code>.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">meta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span><span class="w"> </span><span class="n">stage</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">myc</span><span class="p">)</span><span class="w"> </span><span class="c1"># used data.frame() to create the table</span>
+</code></pre></div>
+ - Use the <code>rownames()</code> function to assign row names to the dataframe (Hint: you can type out the row names as a vector, or if you want the process go faster try exploring the <code>paste()</code> function).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;sample1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample2&quot;</span><span class="p">,</span><span class="kc">...</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample12&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># or use:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;sample12&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Your finished metadata table should have information for the variables <code>sex</code>, <code>stage</code>, <code>treatment</code>, and <code>myc</code> levels: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;">sex</th>
+<th style="text-align: center;">stage</th>
+<th style="text-align: center;">treatment</th>
+<th style="text-align: center;">myc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">sample1</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">2343</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample2</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">457</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample3</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">4593</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample4</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">9035</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample5</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">3450</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample6</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">3524</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample7</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">958</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample8</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">1053</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample9</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">8674</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample10</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">3424</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample11</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">463</td>
+</tr>
+<tr>
+<td style="text-align: center;">sample12</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">II</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">5105</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="subsetting-vectorsfactors-and-dataframes">Subsetting vectors/factors and dataframes<a class="headerlink" href="#subsetting-vectorsfactors-and-dataframes" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Using the <code>meta</code> data frame from question <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/1" title="GitHub Issue: squidfunk/mkdocs-material #1">#1</a>, write out the R code you would use to perform the following operations (questions <strong>DO NOT</strong> build upon each other):</p>
+<ul>
+<li>return only the <code>treatment</code> and <code>sex</code> columns using <code>[]</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">meta</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)]</span>
+</code></pre></div>
+<ul>
+<li>return the <code>treatment</code> values for samples 5, 7, 9, and 10 using <code>[]</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">meta</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">),</span><span class="w"> </span><span class="m">3</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>use <code>filter()</code> to return all data for those samples receiving treatment <code>P</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">filter</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>use <code>filter()</code>/<code>select()</code> to return only the <code>stage</code> and <code>treatment</code> data for those samples with <code>myc</code> &gt; 5000:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">filter</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="n">myc</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>remove the <code>treatment</code> column from the dataset using <code>[]</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">meta</span><span class="p">[,</span><span class="w"> </span><span class="m">-3</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>remove samples 7, 8 and 9 from the dataset using <code>[]</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">meta</span><span class="p">[</span><span class="m">-7</span><span class="o">:</span><span class="m">-9</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>keep only samples 1-6 using <code>[]</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">meta</span><span class="w"> </span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>add a column called <code>pre_treatment</code> to the beginning of the dataframe with the values T, F, F, F, T, T, F, T, F, F, T, T (Hint: use <code>cbind()</code>): </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">pre_treatment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">F</span><span class="p">,</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nf">cbind</span><span class="p">(</span><span class="n">pre_treatment</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>change the names of the columns to: "A", "B", "C", "D":</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">colnames</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;D&quot;</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="extracting-components-from-lists">Extracting components from lists<a class="headerlink" href="#extracting-components-from-lists" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Create a new list, <code>list_hw</code> with three components, the <code>glengths</code> vector, the dataframe <code>df</code>, and <code>number</code> value. Use this list to answer the questions below . <code>list_hw</code> has the following structure (NOTE: the components of this list are not currently named):</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w">   </span><span class="m">4.6</span><span class="w">  </span><span class="m">3000.0</span><span class="w"> </span><span class="m">50000.0</span><span class="w"> </span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">[[</span><span class="m">2</span><span class="p">]]</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">          </span><span class="n">species</span><span class="w">  </span><span class="n">glengths</span><span class="w"> </span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">     </span><span class="m">1</span><span class="w">    </span><span class="n">ecoli</span><span class="w">    </span><span class="m">4.6</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">     </span><span class="m">2</span><span class="w">    </span><span class="n">human</span><span class="w">    </span><span class="m">3000.0</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">     </span><span class="m">3</span><span class="w">    </span><span class="n">corn</span><span class="w">     </span><span class="m">50000.0</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">[[</span><span class="m">3</span><span class="p">]]</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="m">8</span>
+</code></pre></div>
+Write out the R code you would use to perform the following operations (questions <strong>DO NOT</strong> build upon each other):
+ - return the second component of the list:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">list_hw</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span>
+</code></pre></div>
+<ul>
+<li>return <code>50000.0</code> from the first component of the list:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">list_hw</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">3</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>return the value <code>human</code> from the second component: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">list_hw</span><span class="p">[[</span><span class="m">2</span><span class="p">]][</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>give the components of the list the following names: "genome_lengths", "genomes", "record":</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">names</span><span class="p">(</span><span class="n">list_hw</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;genome_lengths&quot;</span><span class="p">,</span><span class="s">&quot;genomes&quot;</span><span class="p">,</span><span class="s">&quot;record&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">list_hw</span><span class="o">$</span><span class="n">record</span>
+</code></pre></div>
+</li>
+</ol>
+<h2 id="creating-figures-with-ggplot2">Creating figures with ggplot2<a class="headerlink" href="#creating-figures-with-ggplot2" title="Permanent link">&para;</a></h2>
+<p><center>
+<a class="glightbox" href="../../img/plotcounts.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="plot_image" src="../../img/plotcounts.png" /></a>
+</center></p>
+<ol>
+<li>Create the same plot as above using ggplot2 using the provided metadata and counts datasets. The <a href="https://github.com/hbc/Intro-to-R-2-day/raw/master/data/Mov10_full_meta.txt">metadata table</a> describes an experiment that you have setup for RNA-seq analysis, while the <a href="https://github.com/hbc/Intro-to-R-2-day/raw/master/data/normalized_counts.txt">associated count matrix</a> gives the normalized counts for each sample for every gene. Download the count matrix and metadata using the links provided.</li>
+</ol>
+<p>Follow the instructions below to build your plot. Write the code you used and provide the final image.</p>
+<ul>
+<li>
+<p>Read in the metadata file using: <code>meta &lt;- read.delim("Mov10_full_meta.txt", sep="\t", row.names=1)</code></p>
+</li>
+<li>
+<p>Read in the count matrix file using: <code>data &lt;- read.delim("normalized_counts.txt", sep="\t", row.names=1)</code></p>
+</li>
+<li>
+<p>Create a vector called <code>expression</code> that contains the normalized count values from the row in <code>data</code> that corresponds to the <code>MOV10</code> gene.  </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">expression</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="s">&quot;MOV10&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Check the class of this expression vector. <code>data.frame</code></li>
+</ul>
+<p>Then, will need to convert this to a numeric vector using <code>as.numeric(expression)</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">class</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">expression</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="nf">class</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Bind that vector to your metadata data frame (<code>meta</code>) and call the new data frame <code>df</code>. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span><span class="w"> </span><span class="c1">#or</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span><span class="w"> </span><span class="n">expression</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Create a ggplot by constructing the plot line by line:</p>
+<ul>
+<li>
+<p>Initialize a  ggplot with your <code>df</code> as input.</p>
+</li>
+<li>
+<p>Add the <code>geom_jitter()</code> geometric object with the required aesthetics</p>
+</li>
+<li>
+<p>Color the points based on <code>sampletype</code></p>
+</li>
+<li>
+<p>Add the <code>theme_bw()</code> layer </p>
+</li>
+<li>
+<p>Add the title "Expression of MOV10" to the plot</p>
+</li>
+<li>
+<p>Change the x-axis label to be blank</p>
+</li>
+<li>
+<p>Change the y-axis label to "Normalized counts"</p>
+</li>
+<li>
+<p>Using <code>theme()</code> change the following properties of the plot:</p>
+<ul>
+<li>
+<p>Remove the legend (Hint: use ?theme help and scroll down to legend.position)</p>
+</li>
+<li>
+<p>Change the plot title size to 1.5x the default and center align</p>
+</li>
+<li>
+<p>Change the axis title to 1.5x the default size</p>
+</li>
+<li>
+<p>Change the size of the axis text only on the y-axis to 1.25x the default size</p>
+</li>
+<li>
+<p>Rotate the x-axis text to 45 degrees using <code>axis.text.x=element_text(angle=45, hjust=1)</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">     </span><span class="nf">geom_jitter</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="w"> </span><span class="n">sampletype</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">expression</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampletype</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">     </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">     </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Expression of MOV10&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">     </span><span class="nf">xlab</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">     </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Normalized counts&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">     </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">          </span><span class="n">plot.title</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="nf">rel</span><span class="p">(</span><span class="m">1.5</span><span class="p">)),</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">          </span><span class="n">axis.text</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nf">rel</span><span class="p">(</span><span class="m">1.25</span><span class="p">)),</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">          </span><span class="n">axis.title</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nf">rel</span><span class="p">(</span><span class="m">1.5</span><span class="p">)),</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">          </span><span class="n">axis.text.x</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="o">=</span><span class="m">1</span><span class="p">))</span>
+</code></pre></div>
+<center>
+<a class="glightbox" href="../../img/MOV10_homework_ggplot.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="plot_image" src="../../img/MOV10_homework_ggplot.png" /></a> 
+</center></p>
+</li>
+</ul>
+<hr />
+<div class="admonition quote">
+<p class="admonition-title">Attribution notice</p>
+<ul>
+<li>
+<p><em>This lesson has been developed by members of the teaching team at the <a href="http://bioinformatics.sph.harvard.edu/">Harvard Chan Bioinformatics Core (HBC)</a>. These are open access materials distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</em></p>
+</li>
+<li>
+<p><em>The materials used in this lesson are adapted from work that is Copyright © Data Carpentry (<a href="http://datacarpentry.org/">http://datacarpentry.org/</a>).</em></p>
+</li>
+<li>
+<p><em>All Data Carpentry instructional material is made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0).</em></p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    2025-03-19
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

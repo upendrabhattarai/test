@@ -1,0 +1,841 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Mary Piper, Jihe Liu, Meeta Mistry, Radhika Khetani, Will Gammerdinger">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../theme_img/HBC_logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Tidyverse data wrangling - Intro-to-R-mkdocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+
+
+<!-- Original Header -->
+
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Intro-to-R-mkdocs" class="md-header__button md-logo" aria-label="Intro-to-R-mkdocs" data-md-component="logo">
+      
+  <img src="../../theme_img/HBC_logo_2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Intro-to-R-mkdocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tidyverse data wrangling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Workshop_Schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Workshop Schedule
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner">
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-wrangling-with-tidyverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Wrangling with Tidyverse
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Wrangling with Tidyverse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tidyverse-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tidyverse basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tidyverse basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tibbles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tibbles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experimental-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-goal-and-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis goal and workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tidyverse-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tidyverse tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-read-in-the-functional-analysis-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Read in the functional analysis results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-extract-only-the-go-biological-processes-bp-of-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Extract only the GO biological processes (BP) of interest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-select-only-the-columns-needed-for-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Select only the columns needed for visualization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-order-go-processes-by-significance-adjusted-p-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Order GO processes by significance (adjusted p-values)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-rename-columns-to-be-more-intuitive" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Rename columns to be more intuitive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-create-additional-metrics-for-plotting-eg-gene-ratios" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Create additional metrics for plotting (e.g. gene ratios)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      </div>
+    </div>
+  </div>
+
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>Approximate time: 75 minutes</p>
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Perform basic data wrangling with functions in the Tidyverse package.</li>
+</ul>
+<h1 id="data-wrangling-with-tidyverse">Data Wrangling with Tidyverse<a class="headerlink" href="#data-wrangling-with-tidyverse" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://www.tidyverse.org/packages/">Tidyverse suite of integrated packages</a> are designed to work together to make common data science operations more user friendly. The packages have functions for data wrangling, tidying, reading/writing, parsing, and visualizing, among others. There is a freely available book, <a href="http://r4ds.had.co.nz/index.html">R for Data Science</a>, with detailed descriptions and practical examples of the tools available and how they work together. We will explore the basic syntax for working with these packages, as well as, specific functions for data wrangling with the 'dplyr' package and data visualization with the 'ggplot2' package.</p>
+<p><center>
+<a class="glightbox" href="../../img/tidyverse_website.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../img/tidyverse_website.png" /></a>
+</center></p>
+<h2 id="tidyverse-basics">Tidyverse basics<a class="headerlink" href="#tidyverse-basics" title="Permanent link">&para;</a></h2>
+<p>The Tidyverse suite of packages introduces users to a set of data structures, functions and operators to make working with data more intuitive, but is slightly different from the way we do things in base R. <strong>Two important new concepts we will focus on are pipes and tibbles</strong>.</p>
+<p>Before we get started with pipes or tibbles, let's load the library:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="pipes">Pipes<a class="headerlink" href="#pipes" title="Permanent link">&para;</a></h3>
+<p>Stringing together commands in R can be quite daunting. Also, trying to understand code that has many nested functions can be confusing. </p>
+<p>To make R code more human readable, the Tidyverse tools use the pipe, <code>%&gt;%</code>, which was acquired from the <code>magrittr</code> package and is now part of the <code>dplyr</code> package that is installed automatically with Tidyverse. <strong>The pipe allows the output of a previous command to be used as input to another command instead of using nested functions.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Shortcut to write the pipe is <kbd>shift</kbd> + <kbd>command</kbd> + <kbd>M</kbd></p>
+</div>
+<p>An example of using the pipe to run multiple commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">## A single command</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">sqrt</span><span class="p">(</span><span class="m">83</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">## Base R method of running more than one command</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">round</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">83</span><span class="p">),</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">## Running more than one command with piping</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nf">sqrt</span><span class="p">(</span><span class="m">83</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
+<p>The pipe represents a much easier way of writing and deciphering R code, and so we will be taking advantage of it, when possible, as we work through the remaining lesson.</p>
+<div class="admonition question">
+<p class="admonition-title">Exercise</p>
+<ol>
+<li>
+<p>Create a vector of random numbers using the code below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">random_numbers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">81</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">65</span><span class="p">,</span><span class="w"> </span><span class="m">43</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">29</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Use the pipe (<code>%&gt;%</code>) to perform two steps in a single line:</p>
+<ul>
+<li>Take the mean of <code>random_numbers</code> using the <code>mean()</code> function.</li>
+<li>Round the output to three digits using the <code>round()</code> function.</li>
+</ul>
+</li>
+</ol>
+</div>
+<h3 id="tibbles">Tibbles<a class="headerlink" href="#tibbles" title="Permanent link">&para;</a></h3>
+<p>A core component of the <a href="http://tidyverse.org/">tidyverse</a> is the <a href="http://tibble.tidyverse.org/">tibble</a>. <strong>Tibbles are a modern rework of the standard <code>data.frame</code>, with some internal improvements</strong> to make code more reliable.  They are data frames, but do not follow all of the same rules. For example, tibbles can have numbers/symbols for column names, which is not normally allowed in base R. </p>
+<p><strong>Important: <a href="http://tidyverse.org/">tidyverse</a> is very opininated about row names</strong>. These packages insist that all column data (e.g. <code>data.frame</code>) be treated equally, and that special designation of a column as <code>rownames</code> should be deprecated. <a href="http://tibble.tidyverse.org/">Tibble</a> provides simple utility functions to handle rownames: <code>rownames_to_column()</code> and <code>column_to_rownames()</code>. </p>
+<p>Tibbles can be created directly using the <code>tibble()</code> function or data frames can be converted into tibbles using <code>as_tibble(name_of_df)</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function <code>as_tibble()</code> will ignore row names, so if a column representing the row names is needed, then the function <code>rownames_to_column(name_of_df)</code> should be run prior to turning the data.frame into a tibble. Also, <code>as_tibble()</code> will not coerce character vectors to factors by default.</p>
+</div>
+<h2 id="experimental-data">Experimental data<a class="headerlink" href="#experimental-data" title="Permanent link">&para;</a></h2>
+<p>We're going to explore the Tidyverse suite of tools to wrangle our data to prepare it for visualization. You should have downloaded the file called <code>gprofiler_results_Mov10oe.tsv</code> into your R project's <code>data</code> folder earlier. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not have the <code>gprofiler_results_Mov10oe.tsv</code> file in your <code>data</code> folder, you can right click and download it into the <code>data</code> folder <a href="https://github.com/hbctraining/Training-modules/blob/master/Tidyverse_ggplot2/data/gprofiler_results_Mov10oe.tsv?raw=true">using this link</a>.</p>
+</div>
+<p><strong>The dataset:</strong></p>
+<ul>
+<li>Represents the <strong>functional analysis results</strong>, including the biological processes, functions, pathways, or conditions that are over-represented in a given list of genes.</li>
+<li>Our gene list was generated by <strong>differential gene expression analysis</strong> and the genes represent differences between <strong>control mice</strong> and <strong>mice over-expressing a gene involved in RNA splicing</strong>. </li>
+</ul>
+<p>The functional analysis that we will focus on involves <strong>gene ontology (GO) terms</strong>, which:</p>
+<ul>
+<li>describe the roles of genes and gene products</li>
+<li>organized into three controlled vocabularies/ontologies (domains):<ul>
+<li>biological processes (BP)</li>
+<li>cellular components (CC)</li>
+<li>molecular functions (MF)</li>
+</ul>
+</li>
+</ul>
+<p><center>
+<a class="glightbox" href="../../img/mov10_FA.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/mov10_FA.png" /></a>
+</center></p>
+<h2 id="analysis-goal-and-workflow">Analysis goal and workflow<a class="headerlink" href="#analysis-goal-and-workflow" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> <em>Visually compare the most significant biological processes (BP) based on the number of associated differentially expressed genes (gene ratios) and significance values by creating the following plot:</em></p>
+<p><center>
+<a class="glightbox" href="../../img/dotplot6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="dotplot6" src="../../img/dotplot6.png" /></a>
+</center></p>
+<p>To wrangle our data in preparation for the plotting, we are going to use the Tidyverse suite of tools to wrangle and visualize our data through several steps:</p>
+<ol>
+<li>Read in the functional analysis results</li>
+<li>Extract only the GO biological processes (BP) of interest</li>
+<li>Select only the columns needed for visualization</li>
+<li>Order by significance (p-adjusted values)</li>
+<li>Rename columns to be more intuitive</li>
+<li>Create additional metrics for plotting (e.g. gene ratios)</li>
+<li>Plot results</li>
+</ol>
+<h2 id="tidyverse-tools">Tidyverse tools<a class="headerlink" href="#tidyverse-tools" title="Permanent link">&para;</a></h2>
+<p>While all of the tools in the Tidyverse suite are deserving of being explored in more depth, we are going to investigate more deeply the reading (<code>readr</code>), wrangling (<code>dplyr</code>), and plotting (<code>ggplot2</code>) tools.</p>
+<h2 id="1-read-in-the-functional-analysis-results">1. Read in the functional analysis results<a class="headerlink" href="#1-read-in-the-functional-analysis-results" title="Permanent link">&para;</a></h2>
+<p>While the base R packages have perfectly fine methods for reading in data, the <code>readr</code> and <code>readxl</code> Tidyverse packages offer additional methods for reading in data. Let's read in our tab-delimited functional analysis results using <code>read_delim()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Read in the functional analysis results</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">functional_GO_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_delim</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;data/gprofiler_results_Mov10oe.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">delim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\t&quot;</span><span class="w"> </span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Take a look at the results</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">functional_GO_results</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<p>Read in the functional analysis results
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">functional_GO_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.delim</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;data/gprofiler_results_Mov10oe.tsv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\t&quot;</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+Take a look at the results
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">functional_GO_results</span>
+</code></pre></div></p>
+</details>
+<p>Notice that the results were automatically read in as a tibble and the output gives the number of rows, columns and the data type for each of the columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A large number of tidyverse functions will work with both tibbles and dataframes, and the data structure of the output will be identical to the input. However, there are some functions that will return a tibble (without row names), whether or not a tibble or dataframe is provided.</p>
+</div>
+<h2 id="2-extract-only-the-go-biological-processes-bp-of-interest">2. Extract only the GO biological processes (BP) of interest<a class="headerlink" href="#2-extract-only-the-go-biological-processes-bp-of-interest" title="Permanent link">&para;</a></h2>
+<p>Now that we have our data, we will need to wrangle it into a format ready for plotting. For all of our data wrangling steps we will be using tools from the <a href="http://dplyr.tidyverse.org/">dplyr</a> package, which is a swiss-army knife for data wrangling of data frames. </p>
+<p>To extract the biological processes of interest, we only want those rows where the <code>domain</code> is equal to <code>BP</code>, which we can do using the <code>filter()</code> function. </p>
+<p>To filter rows of a data frame/tibble based on values in different columns, we give a logical expression as input to the <code>filter()</code> function to return those rows for which the expression is TRUE.</p>
+<p>Now let's return only those rows that have a <code>domain</code> of <code>BP</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Return only GO biological processes</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">functional_GO_results</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">domain</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;BP&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nf">View</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<p>Return only GO biological processes</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">functional_GO_results</span><span class="o">$</span><span class="n">domain</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;BP&quot;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">bp_oe2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">functional_GO_results</span><span class="p">[</span><span class="n">idx</span><span class="p">,]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nf">View</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>Now we have returned only those rows with a <code>domain</code> of <code>BP</code>. <strong>How have the dimensions of our results changed?</strong></p>
+<div class="admonition question">
+<p class="admonition-title">Exercise</p>
+<p>We would like to perform an additional round of filtering to only keep the most specific GO terms. </p>
+<ol>
+<li>For <code>bp_oe</code>, use the <code>filter()</code> function to only keep those rows where the <code>relative.depth</code> is greater than 4.</li>
+<li>Save output to overwrite our <code>bp_oe</code> variable.</li>
+</ol>
+</div>
+<h2 id="3-select-only-the-columns-needed-for-visualization">3. Select only the columns needed for visualization<a class="headerlink" href="#3-select-only-the-columns-needed-for-visualization" title="Permanent link">&para;</a></h2>
+<p>For visualization purposes, we are only interested in the columns related to the GO terms, the significance of the terms, and information about the number of genes associated with the terms. </p>
+<p>To extract columns from a data frame/tibble we can use the <code>select()</code> function. In contrast to base R, we do not need to put the column names in quotes for selection.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Selecting columns to keep</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nf">select</span><span class="p">(</span><span class="n">term.id</span><span class="p">,</span><span class="w"> </span><span class="n">term.name</span><span class="p">,</span><span class="w"> </span><span class="n">p.value</span><span class="p">,</span><span class="w"> </span><span class="n">query.size</span><span class="p">,</span><span class="w"> </span><span class="n">term.size</span><span class="p">,</span><span class="w"> </span><span class="n">overlap.size</span><span class="p">,</span><span class="w"> </span><span class="n">intersection</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nf">View</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<p>Selecting columns to keep
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;term.id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;term.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;p.value&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;query.size&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;term.size&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;overlap.size&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;intersection&quot;</span><span class="p">)]</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">View</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<p>The <code>select()</code> function also allows for negative selection. So we could have alternately removed columns with negative selection. Note that we need to put the column names inside of the combine (<code>c()</code>) function with a <code>-</code> preceding it for this functionality.</p>
+<div class="admonition warning">
+<p class="admonition-title">DO NOT RUN</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># DO NOT RUN</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Selecting columns to remove</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">query.number</span><span class="p">,</span><span class="w"> </span><span class="n">significant</span><span class="p">,</span><span class="w"> </span><span class="n">recall</span><span class="p">,</span><span class="w"> </span><span class="n">precision</span><span class="p">,</span><span class="w"> </span><span class="n">subgraph.number</span><span class="p">,</span><span class="w"> </span><span class="n">relative.depth</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<div class="admonition warning">
+<p class="admonition-title">DO NOT RUN</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">#Selecting columns to remove</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;query.number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;significant&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;recall&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;precision&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;subgraph.number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;relative.depth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;domain&quot;</span><span class="p">))</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="p">[,</span><span class="w"> </span><span class="n">idx</span><span class="p">]</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">br</span><span class="o">&gt;</span>
+</code></pre></div>
+</div>
+</details>
+<p><center>
+<a class="glightbox" href="../../img/bp_oe_selection.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/bp_oe_selection.png" /></a>
+</center></p>
+<h2 id="4-order-go-processes-by-significance-adjusted-p-values">4. Order GO processes by significance (adjusted p-values)<a class="headerlink" href="#4-order-go-processes-by-significance-adjusted-p-values" title="Permanent link">&para;</a></h2>
+<p>Now that we have only the rows and columns of interest, let's arrange these by significance, which is denoted by the adjusted p-value.</p>
+<p>Let's sort the rows by adjusted p-value with the <code>arrange()</code> function.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Order by adjusted p-value ascending</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="n">p.value</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<p>Order by adjusted p-value ascending
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">bp_oe</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="p">[</span><span class="n">idx</span><span class="p">,]</span>
+</code></pre></div></p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wanted to arrange in descending order, then you could have run the following instead:</p>
+<div class="admonition warning">
+<p class="admonition-title">DO NOT RUN</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># DO NOT RUN</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Order by adjusted p-value descending</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">p.value</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<div class="admonition warning">
+<p class="admonition-title">DO NOT RUN</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Do not run</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Order by adjusted p-value descending</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">idx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">order</span><span class="p">(</span><span class="n">bp_oe</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="w"> </span><span class="n">decreasing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="p">[</span><span class="n">idx</span><span class="p">,]</span>
+</code></pre></div>
+</div>
+</details>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ordering variables in <code>ggplot2</code> is a bit different. <a href="https://www.r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html">This post</a> introduces a few ways of ordering variables in a plot.</p>
+</div>
+<h2 id="5-rename-columns-to-be-more-intuitive">5. Rename columns to be more intuitive<a class="headerlink" href="#5-rename-columns-to-be-more-intuitive" title="Permanent link">&para;</a></h2>
+<p>While not necessary for our visualization, renaming columns more intuitively can help with our understanding of the data using the <code>rename()</code> function. The syntax is <code>new_name</code> = <code>old_name</code>.</p>
+<p>Let's rename the <code>term.id</code> and <code>term.name</code> columns.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Provide better names for columns</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">rename</span><span class="p">(</span><span class="n">GO_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term.id</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">                </span><span class="n">GO_term</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term.name</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Provide better names for columns</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">colnames</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;term.id&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;GO_id&quot;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nf">colnames</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;term.name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;GO_term&quot;</span>
+</code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case of two packages with identical function names, you can use <code>::</code> with the package name before and the function name after (e.g <code>stats::filter()</code>) to ensure that the correct function is implemented. The <code>::</code> can also be used to bring in a function from a library without loading it first.</p>
+<p>In the example above, we wanted to use the <code>rename()</code> function specifically from the <code>dplyr</code> package, and not any of the other packages (or base R) which may have the <code>rename()</code> function.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercise</p>
+<p>Rename the <code>intersection</code> column to <code>genes</code> to reflect the fact that these are the DE genes associated with the GO process.</p>
+</div>
+<h2 id="6-create-additional-metrics-for-plotting-eg-gene-ratios">6. Create additional metrics for plotting (e.g. gene ratios)<a class="headerlink" href="#6-create-additional-metrics-for-plotting-eg-gene-ratios" title="Permanent link">&para;</a></h2>
+<p>Finally, before we plot our data, we need to create a couple of additional metrics. The <code>mutate()</code> function enables you to create a new column from an existing column. </p>
+<p>Let's generate gene ratios to reflect the number of DE genes associated with each GO process relative to the total number of DE genes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Create gene ratio column based on other columns in dataset</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bp_oe</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">gene_ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">overlap.size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">query.size</span><span class="p">)</span>
+</code></pre></div>
+<details class="info">
+<summary>Click here to see how to do this in base R</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Create gene ratio column based on other columns in dataset</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">bp_oe</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">bp_oe</span><span class="p">,</span><span class="w"> </span><span class="n">gene_ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bp_oe</span><span class="o">$</span><span class="n">overlap.size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bp_oe</span><span class="o">$</span><span class="n">query.size</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Exercise</p>
+<p>Create a column in <code>bp_oe</code> called <code>term_percent</code> to determine the percent of DE genes associated with the GO term relative to the total number of genes associated with the GO term (<code>overlap.size</code> / <code>term.size</code>)</p>
+</div>
+<p>Our final data for plotting should look like the table below:</p>
+<p><center>
+<a class="glightbox" href="../../img/bp_oe_ready_to_plot.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/bp_oe_ready_to_plot.png" /></a>
+</center></p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>Now that we have our results ready for plotting, we can use the <a href="https://ggplot2.tidyverse.org">ggplot2</a> package to plot our results. If you are interested, you can follow <a href="https://hbctraining.github.io/Training-modules/Tidyverse_ggplot2/lessons/03_ggplot2.html">this lesson</a> and dive into how to use <code>ggplot2</code> to create the plots with this dataset.</p>
+<h3 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="http://r4ds.had.co.nz">R for Data Science</a></li>
+<li><a href="http://varianceexplained.org/r/teach-tidyverse/">teach the tidyverse</a></li>
+<li><a href="http://style.tidyverse.org/">tidy style guide</a></li>
+</ul>
+<hr />
+<div class="admonition quote">
+<p class="admonition-title">Attribution notice</p>
+<ul>
+<li>
+<p><em>This lesson has been developed by members of the teaching team at the <a href="http://bioinformatics.sph.harvard.edu/">Harvard Chan Bioinformatics Core (HBC)</a>. These are open access materials distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</em></p>
+</li>
+<li>
+<p><em>The materials used in this lesson are adapted from work that is Copyright © Data Carpentry (<a href="http://datacarpentry.org/">http://datacarpentry.org/</a>).</em></p>
+</li>
+<li>
+<p><em>All Data Carpentry instructional material is made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0).</em></p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    2025-03-19
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

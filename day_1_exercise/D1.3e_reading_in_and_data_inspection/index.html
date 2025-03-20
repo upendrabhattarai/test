@@ -1,0 +1,767 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../theme_img/HBC_logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Reading in and inspecting data - Intro-to-R-mkdocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+
+
+<!-- Original Header -->
+
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Intro-to-R-mkdocs" class="md-header__button md-logo" aria-label="Intro-to-R-mkdocs" data-md-component="logo">
+      
+  <img src="../../theme_img/HBC_logo_2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Intro-to-R-mkdocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reading in and inspecting data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Workshop_Schedule/" class="md-tabs__link">
+        
+  
+    
+  
+  Workshop Schedule
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+  <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner">
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-data-into-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading data into R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading data into R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      The basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-readcsv-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      The read.csv() function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-data-frame-by-reading-in-the-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a data frame by reading in the file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-data-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting data structures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inspecting data structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-of-functions-for-data-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of functions for data inspection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      </div>
+    </div>
+  </div>
+
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Reading in and inspecting data</h1>
+
+<h2 id="learning-objectives">Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Demonstrate how to read existing data into R</li>
+<li>Utilize base R functions to inspect data structures</li>
+</ul>
+<h2 id="reading-data-into-r">Reading data into R<a class="headerlink" href="#reading-data-into-r" title="Permanent link">&para;</a></h2>
+<h3 id="the-basics">The basics<a class="headerlink" href="#the-basics" title="Permanent link">&para;</a></h3>
+<p>Regardless of the specific analysis in R we are performing, we usually need to bring data in for any analysis being done in R, so learning how to read in data is a crucial component of learning to use R.</p>
+<p>Many functions exist to read data in, and the function in R you use will depend on the file format being read in. Below we have a table with some examples of functions that can be used for importing some common text data types (plain text).</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Data type</th>
+<th style="text-align: left;">Extension</th>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Comma separated values</td>
+<td style="text-align: left;">csv</td>
+<td style="text-align: left;"><code>read.csv()</code></td>
+<td style="text-align: left;">utils (default)</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>read_csv()</code></td>
+<td style="text-align: left;">readr (tidyverse)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tab separated values</td>
+<td style="text-align: left;">tsv</td>
+<td style="text-align: left;"><code>read_tsv()</code></td>
+<td style="text-align: left;">readr</td>
+</tr>
+<tr>
+<td style="text-align: left;">Other delimited formats</td>
+<td style="text-align: left;">txt</td>
+<td style="text-align: left;"><code>read.table()</code></td>
+<td style="text-align: left;">utils</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>read_table()</code></td>
+<td style="text-align: left;">readr</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>read_delim()</code></td>
+<td style="text-align: left;">readr</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>For example, if we have text file where the columns are separated by commas (comma-separated values or comma-delimited), you could use the function <code>read.csv</code>. However, if the data are separated by a different delimiter in a text file (e.g. ":", ";", " ", "\t"), you could use the generic <code>read.table</code> function and specify the delimiter (<code>sep = " "</code>) as an argument in the function. </p>
+<blockquote>
+<p>Note: The <code>"\t"</code> delimiter is shorthand for tab.</p>
+</blockquote>
+<p>In the above table we refer to base R functions as being contained in the "utils" package. In addition to base R functions, we have also listed functions from some other packages that can be used to import data, specifically the "readr" package that installs when you install the "tidyverse" suite of packages.</p>
+<p>In addition to plain text files, you can also import data from other statistical analysis packages and Excel using functions from different packages. </p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Data type</th>
+<th style="text-align: left;">Extension</th>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Stata version 13-14</td>
+<td style="text-align: left;">dta</td>
+<td style="text-align: left;"><code>readdta()</code></td>
+<td style="text-align: left;">haven</td>
+</tr>
+<tr>
+<td style="text-align: left;">Stata version 7-12</td>
+<td style="text-align: left;">dta</td>
+<td style="text-align: left;"><code>read.dta()</code></td>
+<td style="text-align: left;">foreign</td>
+</tr>
+<tr>
+<td style="text-align: left;">SPSS</td>
+<td style="text-align: left;">sav</td>
+<td style="text-align: left;"><code>read.spss()</code></td>
+<td style="text-align: left;">foreign</td>
+</tr>
+<tr>
+<td style="text-align: left;">SAS</td>
+<td style="text-align: left;">sas7bdat</td>
+<td style="text-align: left;"><code>read.sas7bdat()</code></td>
+<td style="text-align: left;">sas7bdat</td>
+</tr>
+<tr>
+<td style="text-align: left;">Excel</td>
+<td style="text-align: left;">xlsx, xls</td>
+<td style="text-align: left;"><code>read_excel()</code></td>
+<td style="text-align: left;">readxl (tidyverse)</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These lists are not comprehensive, and may other functions exist for importing data. Once you have been using R for a bit, maybe you will have a preference for which functions you prefer to use for which data type.</p>
+</div>
+<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<p>When working with large datasets, you will very likely be working with "metadata" file which contains the information about each sample in your dataset.</p>
+<p><center>
+<a class="glightbox" href="../../img/17.metadata_view.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="metadata" src="../../img/17.metadata_view.png" width="500" /></a> </p>
+<p></center>
+The metadata is very important information and we encourage you to think about creating a document with as much metadata you can record before you bring the data into R. <a href="https://datamanagement.hms.harvard.edu/metadata-overview">Here is some additional reading on metadata</a> from the <a href="https://datamanagement.hms.harvard.edu/">HMS Data Management Working Group</a>.</p>
+<h3 id="the-readcsv-function">The <code>read.csv()</code> function<a class="headerlink" href="#the-readcsv-function" title="Permanent link">&para;</a></h3>
+<p>Let's bring in the metadata file we downloaded earlier (<code>mouse_exp_design.csv</code> or <code>mouse_exp_design.txt</code>) using the <code>read.csv</code> function. </p>
+<p>First, check the arguments for the function using the <code>?</code> to ensure that you are entering all the information appropriately:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">?</span><span class="n">read.csv</span>
+</code></pre></div>
+<center>
+<a class="glightbox" href="../../img/read.table-help.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="readtable" src="../../img/read.table-help.png" width="550" /></a> </p>
+<p></center></p>
+<p>The first thing you will notice is that you've pulled up the documentation for <code>read.table()</code>, this is because that is the parent function and all the other functions are in the same family. </p>
+<p>The next item on the documentation page is the function <strong>Description</strong>, which specifies that the output of this set of functions is going to be a <strong>data frame</strong> - "<em>Reads a file in table format and <strong>creates a data frame from it</strong>, with cases corresponding to lines and variables to fields in the file.</em>"</p>
+<p>In usage, all of the arguments listed for <code>read.table()</code> are the default values for all of the family members unless otherwise specified for a given function. Let's take a look at 2 examples:</p>
+<ol>
+<li>
+<p><strong>The separator</strong> </p>
+<ul>
+<li>in the case of <code>read.table()</code> it is <code>sep = ""</code> (space or tab)</li>
+<li>whereas for <code>read.csv()</code> it is <code>sep = ","</code> (a comma).</li>
+</ul>
+</li>
+<li>
+<p><strong>The <code>header</code></strong> </p>
+<p>This argument refers to the column headers that may (<code>TRUE</code>) or may not (<code>FALSE</code>) exist <strong>in the plain text file you are reading in</strong>. </p>
+<ul>
+<li>in the case of <code>read.table()</code> it is <code>header = FALSE</code> (by default, it assumes you do not have column names)</li>
+<li>whereas for <code>read.csv()</code> it is <code>header = TRUE</code> (by default, it assumes that all your columns have names listed). </li>
+</ul>
+</li>
+</ol>
+<p><strong><em>The take-home from the "Usage" section for <code>read.csv()</code> is that it has one mandatory argument, the path to the file and filename in quotations; in our case that is <code>data/mouse_exp_design.csv</code> or <code>data/mouse_exp_design.txt</code>.</em></strong></p>
+<div class="admonition note">
+<p class="admonition-title">The <code>stringsAsFactors</code> argument</p>
+<p>Note that the <code>read.table {utils}</code> family of functions has an argument called <code>stringsAsFactors</code>, which by default is set to FALSE (you can double check this by searching the Help tab for <code>read.table</code> or running <code>?read.table</code> in the console).</p>
+<p>If <code>stringsAsFactors = TRUE</code>, any function in this family of functions will coerce <code>character</code> columns in the data you are reading in to <code>factor</code> columns (i.e., coerce from <code>vector</code> to <code>factor</code>) in the resulting data frame.  </p>
+<p>If you want to maintain the <code>character vector</code> data structure (e.g., for gene names), you will want to make sure that <code>stringsAsFactors = FALSE</code>.</p>
+</div>
+<h3 id="create-a-data-frame-by-reading-in-the-file">Create a data frame by reading in the file<a class="headerlink" href="#create-a-data-frame-by-reading-in-the-file" title="Permanent link">&para;</a></h3>
+<p>At this point, please check the extension for the <code>mouse_exp_design</code> file within your <code>data</code> folder. You will have to type it accordingly within the <code>read.csv()</code> function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>read.csv</code> is not fussy about extensions for plain text files, so even though the file we are reading in is a comma-separated value file, it will be read in properly even with a <code>.txt</code> extension.</p>
+</div>
+<p>Let's read in the <code>mouse_exp_design</code> file and create a new data frame called <code>metadata</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">metadata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">&quot;data/mouse_exp_design.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># OR </span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># metadata &lt;- read.csv(file=&quot;data/mouse_exp_design.txt&quot;)</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>RStudio supports the automatic completion of code using the <kbd>Tab</kbd> key. This is especially helpful for when reading in files to ensure the correct file path. The tab completion feature also provides a shortcut to listing objects, and inline help for functions. <strong>Tab completion is your friend!</strong> We encourage you to use it whenever possible.</p>
+</div>
+<details class="info">
+<summary>Click here to see how to import data using the <kbd>Import Dataset</kbd></summary>
+<p>You can also use the <kbd>Import Dataset</kbd> button in your Environment pane to import data. This option is not as appealing because it can lack reproducibility if not documented properly, but it can be helpful when getting started. In order to use the <kbd>Import Dataset</kbd></p>
+<ol>
+<li>Left-click the <kbd>Import Dataset</kbd> button in the Environment pane</li>
+<li>Left-click <kbd>From Text (base...)</kbd></li>
+<li>Navigate to the file you would like to import and select <kbd>Open</kbd></li>
+<li>Type the name you would like the imported object to be called in the <code>Name</code> textbox.</li>
+<li>Select the delimiter that your file is using in the <code>Separator</code> dropdown menu</li>
+<li>Left-click <kbd>Import</kbd></li>
+</ol>
+<p>These steps are summarized in the GIF below:</p>
+<p><center>
+<a class="glightbox" href="../img/Import_dataset.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt Text" src="../img/Import_dataset.gif" width="1000" /></a>
+</center></p>
+<p>Now the dataset has been imported into your environment.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are going to use this method, it could impact the reproducibility of your work, because the steps to do that import are not recorded anywhere. If you are going to use this method of importing data, it is <b><i>STRONGLY RECOMMENDED</i></b> that you copy the command that read the dataset in and is present in the console to an Rscript file. In the future, you can run that line of code from the Rscript file to recreate the data object.</p>
+</div>
+<p>Go to your Global environment and click on the name of the data frame you just created. </p>
+<p><center>
+<a class="glightbox" href="../../img/metadata_env.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/metadata_env.png" width="500" /></a>
+</center></p>
+<p>When you do this the metadata table will pop up on the top left hand corner of RStudio, right next to the R script.</p>
+<p><center>
+<a class="glightbox" href="../../img/metadata_display.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/metadata_display.png" width="500" /></a>
+</center></p>
+<p>You should see a subtle coloring (blue-gray) of the first row and first column, the rest of the table will have a white background. This is because your first row and first columns have different properties than the rest of the table, they are the names of the rows and columns respectively. </p>
+<p><center>
+<a class="glightbox" href="../../img/metadata_display_row_cols.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/metadata_display_row_cols.png" width="500" /></a>
+</center></p>
+<p>Earlier we noted that the file we just read in had column names (first row of values) and how <code>read.csv()</code> deals with "headers". In addition to column headers, <code>read.csv()</code> also assumes that the first column contains the row names. Not all functions in the <code>read.table()</code> family of functions will do this and depending on which one you use, you may have to specify an additional argument to properly assign the row names and column names.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Row names and column names are really handy when subsetting data structures and they are also helpful to identify samples or genes. We almost always use them with data frames.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercise 1</p>
+<ol>
+<li>Download <a href="https://github.com/hbctraining/Intro-to-R-flipped/raw/master/data/project-summary.txt">this tab-delimited <code>.txt</code> file</a> and save it in your  project's <code>data</code> folder.</li>
+<li>Read it in to R using <code>read.table()</code> with the approriate arguments and store it as the variable <code>proj_summary</code>. To figure out the appropriate arguments to use with <code>read.table()</code>, keep the following in mind:<ul>
+<li>all the columns in the input text file have column name/headers</li>
+<li>you want the first column of the text file to be used as row names (hint: look up the input for the <code>row.names =</code> argument in <code>read.table()</code>)</li>
+</ul>
+</li>
+<li>Display the contents of <code>proj_summary</code> in your console</li>
+</ol>
+</div>
+<h2 id="inspecting-data-structures">Inspecting data structures<a class="headerlink" href="#inspecting-data-structures" title="Permanent link">&para;</a></h2>
+<p>There are a wide selection of base functions in R that are useful for inspecting your data and summarizing it. Let's use the <code>metadata</code> file that we created to test out data inspection functions. </p>
+<p>Take a look at the dataframe by typing out the variable name <code>metadata</code> and pressing return; the variable contains information describing the samples in our study. Each row holds information for a single sample, and the columns contain categorical information about the sample <code>genotype</code>(WT or KO),  <code>celltype</code> (typeA or typeB), and <code>replicate number</code> (1,2, or 3).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">metadata</span>
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Output</p>
+<div class="highlight"><pre><span></span><code>genotype celltype replicate
+sample1        Wt    typeA      1
+sample2        Wt    typeA      2
+sample3        Wt    typeA      3
+sample4        KO    typeA      1
+sample5        KO    typeA      2
+sample6        KO    typeA      3
+sample7        Wt    typeB      1
+sample8        Wt    typeB      2
+sample9        Wt    typeB      3
+sample10       KO    typeB      1
+sample11       KO    typeB      2
+sample12       KO    typeB      3
+</code></pre></div>
+</div>
+<p>Suppose we had a larger file, we might not want to display all the contents in the console. Instead we could check the top (the first 6 lines) of this <code>data.frame</code> using the function <code>head()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="list-of-functions-for-data-inspection">List of functions for data inspection<a class="headerlink" href="#list-of-functions-for-data-inspection" title="Permanent link">&para;</a></h3>
+<p>We already saw how the functions <code>head()</code> and <code>str()</code> (in the releveling section) can be useful to check the content and the structure of a <code>data.frame</code>. Below is a non-exhaustive list of functions to get a sense of the content/structure of data. The list has been divided into functions that work on all types of objects, some that work only on vectors/factors (1 dimensional objects), and others that work on data frames and matrices (2 dimensional objects).</p>
+<p>We have some exercises below that will allow you to gain more familiarity with these. You will definitely be using some of them in the next few homework sections.</p>
+<ul>
+<li>
+<p>All data structures - content display:</p>
+<ul>
+<li><strong><code>str()</code>:</strong> compact display of data contents (similar to what you see in the Global environment)</li>
+<li><strong><code>class()</code>:</strong> displays the data type for vectors (e.g. character, numeric, etc.) and data structure for dataframes, matrices, lists</li>
+<li><strong><code>summary()</code>:</strong> detailed display of the contents of a given object, including descriptive statistics, frequencies</li>
+<li><strong><code>head()</code>:</strong>  prints the first 6 entries (elements for 1-D objects, rows for 2-D objects)</li>
+<li><strong><code>tail()</code>:</strong> prints the last 6 entries (elements for 1-D objects, rows for 2-D objects)</li>
+</ul>
+</li>
+<li>
+<p>Vector and factor variables: </p>
+<ul>
+<li><strong><code>length()</code>:</strong> returns the number of elements in a vector or factor</li>
+</ul>
+</li>
+<li>
+<p>Dataframe and matrix variables:</p>
+<ul>
+<li><strong><code>dim()</code>:</strong> returns dimensions of the dataset (number_of_rows, number_of_columns) [Note, row numbers will always be displayed before column numbers in R]</li>
+<li><strong><code>nrow()</code>:</strong> returns the number of rows in the dataset</li>
+<li><strong><code>ncol()</code>:</strong> returns the number of columns in the dataset</li>
+<li><strong><code>rownames()</code>:</strong> returns the row names in the dataset  </li>
+<li><strong><code>colnames()</code>:</strong> returns the column names in the dataset</li>
+</ul>
+</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Exercise 2</p>
+<ul>
+<li>Use the <code>class()</code> function on <code>glengths</code> and <code>metadata</code>, how does the output differ between the two?</li>
+<li>Use the <code>summary()</code> function on the <code>proj_summary</code> dataframe, what is the median "rRNA_rate"?</li>
+<li>How long is the <code>samplegroup</code> factor?</li>
+<li>What are the dimensions of the <code>proj_summary</code> dataframe?</li>
+<li>When you use the <code>rownames()</code> function on <code>metadata</code>, what is the <em>data structure</em> of the output?</li>
+<li>[Optional] How many elements in (how long is) the output of <code>colnames(proj_summary)</code>? Don't count, but use another function to determine this.</li>
+</ul>
+</div>
+<hr />
+<div class="admonition quote">
+<p class="admonition-title">Attribution notice</p>
+<ul>
+<li>
+<p><em>This lesson has been developed by members of the teaching team at the <a href="http://bioinformatics.sph.harvard.edu/">Harvard Chan Bioinformatics Core (HBC)</a>. These are open access materials distributed under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original author and source are credited.</em></p>
+</li>
+<li>
+<p><em>The materials used in this lesson are adapted from work that is Copyright © Data Carpentry (<a href="http://datacarpentry.org/">http://datacarpentry.org/</a>).</em></p>
+</li>
+<li>
+<p><em>All Data Carpentry instructional material is made available under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a> (CC BY 4.0).</em></p>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    2025-03-19
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tabs", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
